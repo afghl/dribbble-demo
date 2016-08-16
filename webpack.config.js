@@ -1,7 +1,8 @@
 var path = require('path')
 var webpack = require('webpack')
 
-module.exports = {
+var js = {
+  name: 'js',
   devtool: 'cheap-module-eval-source-map',
   entry: [
     'webpack-hot-middleware/client',
@@ -23,7 +24,13 @@ module.exports = {
         loaders: [ 'babel' ],
         exclude: /node_modules/,
         include: __dirname
+      },
+      {
+        test: /\.scss$/,
+        loaders: ["style", "css", "sass"]
       }
     ]
   }
 }
+
+module.exports = js

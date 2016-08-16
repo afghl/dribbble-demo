@@ -1,1 +1,4 @@
 /node_modules
+/disc
+npm-debug.log
+/static
