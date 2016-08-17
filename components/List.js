@@ -3,11 +3,11 @@ import React, { Component, PropTypes } from 'react'
 export default class List extends Component {
   render() {
     const { items, renderItem } = this.props
-    
+
     return (
-      <div>
+      <ul>
         {items.map(renderItem)}
-      </div>
+      </ul>
     )
   }
 }
