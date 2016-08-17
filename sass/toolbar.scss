@@ -1,0 +1,38 @@
+.top-toolbar {
+  width: 100%;
+  border-bottom: 1px solid rgba(47, 47, 47, 0.980392);
+  position: relative;
+
+  &:after {
+    content: ' ';
+    display: table;
+    clear: both;
+  }
+}
+
+.shot-menu {
+  width: 70%;
+  margin: 0 auto;
+
+  li {
+    height: 40px;
+    line-height: 40px;
+    float: left;
+    width: 33.3%;
+    text-align: center;
+  }
+
+}
+
+.screenshot-menu {
+  position: absolute;
+  top: 5px;
+  right: 10px;
+
+  .menu-button {
+    background: rgba(47, 47, 47, 0.980392);
+    width: 30px;
+    height: 30px;
+    display: block;
+  }
+}

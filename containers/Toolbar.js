@@ -5,7 +5,7 @@ import ScreenshotAction from './ScreenshotAction'
 export default class Toolbar extends Component {
   render() {
     return (
-      <div>
+      <div className="top-toolbar">
         <ShotMenu />
         <ScreenshotAction />
       </div>

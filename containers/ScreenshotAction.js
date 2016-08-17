@@ -19,9 +19,9 @@ export default class ScreenshotAction extends Component {
         <a className="menu-button" onClick={this._onMenuClick.bind(this)}></a>
         <div className={ulClassName}>
           <h3>display options</h3>
-          <ul className="large-small">
-            <li className="large">large</li>
-            <li className="small">small</li>
+          <ul>
+            <li>large</li>
+            <li>small</li>
           </ul>
         </div>
       </div>

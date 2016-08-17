@@ -1,0 +1,22 @@
+$background-white: #f9f9f9;
+$black: #484848;
+$white: rgba(255,255,255,0.85);
+
+.hide {
+  display: none;
+}
+
+body {
+  margin: 0;
+  color: $black;
+  background: $background-white;
+  font-family: proxima-nova,"Helvetica Neue",Helvetica,Roboto,Arial,sans-serif;
+}
+
+ul {
+  padding: 0;
+}
+
+li {
+  list-style: none;
+}

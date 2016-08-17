@@ -12,7 +12,7 @@ export default class ShotMenu extends Component {
 
   render() {
     return(
-      <div>
+      <div className="shot-menu">
         <List renderItem={this.renderMenuItem}
               items={menus}
         />
