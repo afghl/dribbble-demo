@@ -1,5 +1,3 @@
-const shotReducer = (state, action) => {
+export default (state, action) => {
   return state
 }
-
-export default shotReducer
