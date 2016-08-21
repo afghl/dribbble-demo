@@ -1,22 +1,23 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { fetchShots } from '../actions/index'
+import { loadShots } from '../actions/index'
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    onClick: () => { dispatch(fetchShots('hehe')) }
-  }
-}
+// const mapDispatchToProps = (dispatch) => {
+//   return {
+//     onClick: () => { dispatch(loadShots()) }
+//   }
+// }
 
 class TestBtn extends Component {
 
   render() {
-    const { onClick } = this.props
+    const { loadShots } = this.props
+
 
     return (
-      <button onClick={onClick} className={'test-btn'}>TestBtn</button>
+      <button onClick={loadShots} className={'test-btn'}>TestBtn</button>
     )
   }
 }
 
-export default connect(null, mapDispatchToProps)(TestBtn)
+export default connect(null, { loadShots })(TestBtn)
