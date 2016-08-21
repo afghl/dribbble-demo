@@ -5,7 +5,7 @@ import thunk from 'redux-thunk'
 import api from '../middleware/api'
 
 export default function configureStore() {
-  const middleware = applyMiddleware(logger(), thunk, api)
+  const middleware = applyMiddleware(thunk, api, logger())
 
   return createStore(shotReducer, middleware)
 }
