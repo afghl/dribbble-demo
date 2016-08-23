@@ -13,15 +13,28 @@
 .shot-menu {
   width: 70%;
   margin: 0 auto;
-
+  > ul {
+    margin: 0;
+  }
+  > ul:after {
+    content: ' ';
+    display: table;
+    clear: both;
+  }
   > ul li {
-    height: 40px;
     line-height: 40px;
     float: left;
     width: 33.3%;
     text-align: center;
   }
-
+  .sub {
+    z-index: 999;
+    &:after {
+      content: ' ';
+      display: table;
+      clear: both;
+    }
+  }
 }
 
 .screenshot-menu {

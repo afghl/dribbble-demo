@@ -6,20 +6,13 @@ import TestBtn from './TestBtn'
 
 export default class App extends Component {
   render() {
-    // return (
-    //   <div>
-    //     <Header />
-    //     <Toolbar />
-    //     <ShotList />
-    //   </div>
-    // )
-
     return (
       <div>
-      <Header />
-      <Toolbar />
-      <TestBtn />
+        <Header />
+        <Toolbar />
+        <ShotList />
       </div>
     )
+
   }
 }

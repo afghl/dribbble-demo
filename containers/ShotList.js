@@ -1,20 +1,17 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
 import List from '../components/List'
 import ShotListItem from './ShotListItem'
 
-export default class ShotList extends Component {
-
-  renderShotListItem() {
-    return (
-      <ShotListItem />
-    )
-  }
-
+class ShotList extends Component {
   render() {
     return (
-      <List renderItem={() => <ShotListItem />}
-            items={[{}, {}]}
+      <List
+        renderItem={() => <ShotListItem />}
+        items={[{}, {}]}
       />
     )
   }
 }
+
+export default connect()(ShotList)

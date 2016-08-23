@@ -9,10 +9,8 @@ import { loadShots } from '../actions/index'
 // }
 
 class TestBtn extends Component {
-
   render() {
     const { loadShots } = this.props
-
 
     return (
       <button onClick={loadShots} className={'test-btn'}>TestBtn</button>

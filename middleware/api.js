@@ -75,10 +75,11 @@ export default store => next => action => {
 
   const [ requestType, successType, failureType ] = types
 
+  next(actionWith({ type: requestType }))
+
   return callApi(endpoint, schema).then(
 
     response => {
-      console.log(response);
       next(actionWith({
         response,
         type: successType
