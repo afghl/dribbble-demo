@@ -1,4 +1,5 @@
 import { Schema, arrayOf, normalize } from 'normalizr'
+import { camelizeKeys } from 'humps'
 import 'isomorphic-fetch'
 
 const TOKEN = '5dec7baeb4eb2d56d4b803a2ad8a39dee32de2492732f68fbdb80ceb24ef9ba0'
@@ -19,18 +20,12 @@ function callApi(endpoint, schema) {
       response.json().then(json => ({ json, response }))
     ).then(({ json, response }) => {
       console.log(json);
-      console.log(response);
       if (!response.ok) {
         return Promise.reject(json)
       }
 
       const camelizedJson = camelizeKeys(json)
-      const nextPageUrl = getNextPageUrl(response)
-
-      return Object.assign({},
-        normalize(camelizedJson, schema),
-        { nextPageUrl }
-      )
+      return Object.assign({}, normalize(camelizedJson, schema))
     })
 }
 
@@ -57,9 +52,9 @@ export default store => next => action => {
   if (typeof endpoint !== 'string') {
     throw new Error('Specify a string endpoint URL.')
   }
-  // if (!schema) {
-  //   throw new Error('Specify one of the exported Schemas.')
-  // }
+  if (!schema) {
+    throw new Error('Specify one of the exported Schemas.')
+  }
   if (!Array.isArray(types) || types.length !== 3) {
     throw new Error('Expected an array of three action types.')
   }
@@ -81,8 +76,8 @@ export default store => next => action => {
 
     response => {
       next(actionWith({
-        response,
-        type: successType
+        type: successType,
+        response
       }))
     },
     error => next(actionWith({

@@ -1,5 +1,6 @@
 // import fetch from 'isomorphic-fetch'
 import { CALL_API } from '../middleware/api'
+import Schemas from '../schemas/index'
 
 export const SHOTS_REQUEST = 'SHOTS_REQUEST'
 export const SHOTS_SUCCESS = 'SHOTS_SUCCESS'
@@ -11,7 +12,7 @@ function fetchShots() {
     [CALL_API]: {
       types: [ SHOTS_REQUEST, SHOTS_SUCCESS, SHOTS_FAILURE ],
       endpoint: 'shots',
-      schema: null
+      schema: Schemas.SHOT_ARRAY
     }
   }
 }
@@ -26,7 +27,6 @@ export function loadShots() {
   // It passes the dispatch method as an argument to the function,
   // thus making it able to dispatch actions itself.
   return (dispatch, getState) => {
-    dispatch({type: 'test', payload: 'see if it can go to reducer'})
-    dispatch(fetchShots())
+    return dispatch(fetchShots())
   }
 }

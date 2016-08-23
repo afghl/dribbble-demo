@@ -2,11 +2,14 @@ import React, { Component, PropTypes } from 'react'
 
 export default class ShotListItem extends Component {
   render() {
+    const { images: { normal } } = this.props
+    console.log(normal);
+
     return (
       <li className="shot-item">
         <div className="shot-card">
           <div className="shot-image">
-            <img src="https://d13yacurqjgara.cloudfront.net/users/31752/screenshots/2896428/dreams.jpg"/>
+            <img src={normal}/>
           </div>
           <ul className="shot-extra">
             <li className="view">2910</li>
