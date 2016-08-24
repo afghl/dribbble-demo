@@ -8,21 +8,3 @@
     clear: both;
   }
 }
-
-.shot-extra {
-  color: rgb(170, 170, 170);
-  font-size: 13px;
-  margin-bottom: 7px;
-  margin-right: 10px;
-
-  > li {
-    float: right;
-    margin-left: 5px;
-    margin-right: 5px;
-  }
-  &:after {
-    content: ' ';
-    display: table;
-    clear: both;
-  }
-}

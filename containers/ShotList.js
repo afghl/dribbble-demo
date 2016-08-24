@@ -26,7 +26,7 @@ class ShotList extends Component {
   renderShotItem(shot) {
     return (
       <ShotListItem
-        images={shot.images}
+        shot={shot}
       />
     )
   }
