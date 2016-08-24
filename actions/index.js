@@ -7,12 +7,13 @@ export const SHOTS_SUCCESS = 'SHOTS_SUCCESS'
 export const SHOTS_FAILURE = 'SHOTS_FAILURE'
 
 // Relies on the custom API middleware defined in ../middleware/api.js.
-function fetchShots() {
+function fetchShots(page) {
   return {
     [CALL_API]: {
       types: [ SHOTS_REQUEST, SHOTS_SUCCESS, SHOTS_FAILURE ],
       endpoint: 'shots',
-      schema: Schemas.SHOT_ARRAY
+      schema: Schemas.SHOT_ARRAY,
+      params: { page: page }
     }
   }
 }
@@ -26,7 +27,9 @@ export function loadShots() {
   // Thunk middleware knows how to handle functions.
   // It passes the dispatch method as an argument to the function,
   // thus making it able to dispatch actions itself.
+
   return (dispatch, getState) => {
-    return dispatch(fetchShots())
+    const { pagination: { page } } = getState()
+    return dispatch(fetchShots(page))
   }
 }

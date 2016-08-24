@@ -4,10 +4,10 @@ import List from '../components/List'
 import ShotListItem from './ShotListItem'
 import { loadShots } from '../actions/index'
 
-// TODO
 const mapStateToProps = (state, ownProps) => {
-  const { shots } = state
-  return { shots }
+  const { shots, pagination } = state
+  const shotList = pagination.ids.map(id => shots[id])
+  return { shots: shotList }
 }
 
 class ShotList extends Component {

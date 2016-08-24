@@ -5,21 +5,20 @@ import 'isomorphic-fetch'
 const TOKEN = '5dec7baeb4eb2d56d4b803a2ad8a39dee32de2492732f68fbdb80ceb24ef9ba0'
 const API_ROOT = 'https://api.dribbble.com/v1/'
 
-const getFullUrl = endpoint => {
+const getFullUrl = (endpoint, params) => {
   const fullUrl = (endpoint.indexOf(API_ROOT) === -1) ? API_ROOT + endpoint : endpoint
-  return `${fullUrl}?access_token=${TOKEN}`
+  return `${fullUrl}?access_token=${TOKEN}&page=${params.page}`
 }
 
 // Fetches an API response and normalizes the result JSON according to schema.
 // This makes every API response have the same shape, regardless of how nested it was.
-function callApi(endpoint, schema) {
-  const fullUrl = getFullUrl(endpoint)
+function callApi(endpoint, params, schema) {
+  const fullUrl = getFullUrl(endpoint, params)
 
   return fetch(fullUrl)
     .then(response =>
       response.json().then(json => ({ json, response }))
     ).then(({ json, response }) => {
-      console.log(json);
       if (!response.ok) {
         return Promise.reject(json)
       }
@@ -40,10 +39,8 @@ export default store => next => action => {
     return next(action)
   }
 
-  console.log('find CALL_API in action so the action go in to api middleware...');
-
   let { endpoint } = callAPI
-  const { schema, types } = callAPI
+  const { schema, types, params } = callAPI
 
   if (typeof endpoint === 'function') {
     endpoint = endpoint(store.getState())
@@ -72,8 +69,7 @@ export default store => next => action => {
 
   next(actionWith({ type: requestType }))
 
-  return callApi(endpoint, schema).then(
-
+  return callApi(endpoint, params, schema).then(
     response => {
       next(actionWith({
         type: successType,

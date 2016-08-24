@@ -19,9 +19,7 @@ export default class ShotListItem extends Component {
           </ul>
         </div>
         <h2 className="attribution">
-          <span className="avater">
-            <img src={avatarUrl}/>
-          </span>
+          <span className="avater"><img src={avatarUrl}/></span>
           {name}
         </h2>
       </li>
