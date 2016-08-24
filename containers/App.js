@@ -10,7 +10,9 @@ export default class App extends Component {
       <div>
         <Header />
         <Toolbar />
-        <ShotList />
+        <div id={"wrap-inner"}>
+          <ShotList />
+        </div>
       </div>
     )
 

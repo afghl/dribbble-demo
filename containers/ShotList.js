@@ -38,6 +38,7 @@ class ShotList extends Component {
       <List
         renderItem={this.renderShotItem}
         items={shots}
+        className={"shot-list"}
       />
     )
   }

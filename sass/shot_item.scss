@@ -1,0 +1,44 @@
+.shot-item {
+  color: rgb(68, 68, 68);
+  margin: 0 15px 30px 15px;
+  width: 420px;
+  float: left;
+}
+
+.shot-card {
+  background: white;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.07);
+  border-radius: 3px;
+  position: relative;
+  &:after {
+    content: ' ';
+    display: table;
+    clear: both;
+  }
+  &:before {
+    content: ' ';
+    display: table;
+    clear: both;
+  }
+}
+
+.shot-image {
+  margin: 10px;
+  img {
+    width: 100%;
+  }
+}
+
+.attribution {
+  color: rgb(58, 139, 187);
+  font-size: 13px;
+
+
+  .avater {
+    display: inline-block;
+    width: 16px;
+    img {
+      width: 100%;
+    }
+  }
+}

@@ -2,10 +2,10 @@ import React, { Component, PropTypes } from 'react'
 
 export default class List extends Component {
   render() {
-    const { items, renderItem } = this.props
+    const { items, renderItem, className } = this.props
 
     return (
-      <ul>
+      <ul className={className}>
         {items.map(renderItem)}
       </ul>
     )
