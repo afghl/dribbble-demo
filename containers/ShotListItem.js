@@ -1,9 +1,20 @@
 import React, { Component, PropTypes } from 'react'
 
 export default class ShotListItem extends Component {
+  renderExtra() {
+    const { viewsCount, likesCount, commentsCount } = this.props.shot
+
+    return (
+      <ul className="shot-extra">
+        <li>{viewsCount}</li>
+        <li>{likesCount}</li>
+        <li>{commentsCount}</li>
+      </ul>
+    )
+  }
+
   render() {
-    const { shot } = this.props
-    const { images, viewsCount, likesCount, commentsCount, user } = shot
+    const { images, user } = this.props.shot
     const { avatarUrl, name } = user
 
     return (
@@ -12,11 +23,7 @@ export default class ShotListItem extends Component {
           <div className="shot-image">
             <img src={images.normal}/>
           </div>
-          <ul className="shot-extra">
-            <li>{viewsCount}</li>
-            <li>{likesCount}</li>
-            <li>{commentsCount}</li>
-          </ul>
+          {this.renderExtra()}
         </div>
         <h2 className="attribution">
           <span className="avater"><img src={avatarUrl}/></span>
