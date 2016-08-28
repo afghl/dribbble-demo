@@ -25,15 +25,15 @@ class MenuItem extends Component {
   constructor(props) {
     super(props)
     this.renderItem = this.renderItem.bind(this)
+    this.updateVisiting = this.updateVisiting.bind(this)
+    this.updateSelected = this.updateSelected.bind(this)
     this.state = this.getState()
   }
 
   renderItem(item) {
-    const { updateCategory, categoryType } = this.props
-    
     return (
       <li
-        onClick={updateCategory(categoryType, item.key)}
+        onClick={this.updateSelected(item.key)}
         key={item.key}
       >
         {item.name}
@@ -46,7 +46,7 @@ class MenuItem extends Component {
 
     return (
       <li>
-        <a onClick={this.onMenuClick.bind(this)}>{selectedItem.name}</a>
+        <a onClick={this.updateVisiting}>{selectedItem.name}</a>
         <List
           className={ this.state.visiting ? 'sub' : 'sub hide' }
           renderItem={this.renderItem}
@@ -56,8 +56,16 @@ class MenuItem extends Component {
     )
   }
 
-  onMenuClick() {
+  updateVisiting() {
     this.setState({visiting: !this.state.visiting})
+  }
+
+  updateSelected(key) {
+    const { categoryType, updateCategory } = this.props
+    return () => {
+      this.setState({visiting: false})
+      updateCategory(categoryType, key)
+    }
   }
 }
 
