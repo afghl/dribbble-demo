@@ -33,7 +33,8 @@
     "redux-logger": "^2.4.0",
     "redux-thunk": "^1.0.3",
     "sass-loader": "^4.0.0",
-    "style-loader": "^0.13.1"
+    "style-loader": "^0.13.1",
+    "express": "^4.13.3"
   },
   "devDependencies": {
     "babel-core": "^6.3.15",
@@ -42,7 +43,6 @@
     "babel-preset-react": "^6.3.13",
     "babel-preset-react-hmre": "^1.1.1",
     "concurrently": "^0.1.1",
-    "express": "^4.13.3",
     "redux-devtools": "^3.1.0",
     "redux-devtools-dock-monitor": "^1.0.1",
     "redux-devtools-log-monitor": "^1.0.3",

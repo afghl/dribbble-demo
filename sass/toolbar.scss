@@ -1,7 +1,9 @@
 .top-toolbar {
   width: 100%;
-  border-bottom: 1px solid rgba(47, 47, 47, 0.980392);
+  border-bottom: 1px solid #e5e5e5;
   position: relative;
+  background: rgba(255,255,255,0.6);
+  min-height: 50px;
 
   &:after {
     content: ' ';
@@ -11,41 +13,95 @@
 }
 
 .shot-menu {
-  width: 70%;
-  margin: 0 auto;
   > ul {
-    margin: 0;
-  }
-  > ul:after {
-    content: ' ';
-    display: table;
-    clear: both;
-  }
-  > ul li {
-    line-height: 40px;
-    float: left;
-    width: 33.3%;
+    margin: 0 auto;
     text-align: center;
-  }
-  .sub {
-    z-index: 999;
+    &:before {
+      content: ' ';
+      display: inline-block;
+      vertical-align: middle;
+      height: 100%;
+    }
     &:after {
       content: ' ';
       display: table;
       clear: both;
     }
+    > li {
+      display: inline-block;
+      text-align: center;
+      vertical-align: middle;
+      margin-right: 10px;
+    }
+  }
+  .sub {
+    position: absolute;
+    width: 200px;
+    margin: -5px 0 0 -20px;
+    padding: 6px 0 10px 0;
+    font-size: 13px;
+    background: #fbfbfb;
+    border-radius: 6px;
+    border-bottom-right-radius: 4px;
+    box-shadow: 1px 2px 2px rgba(0,0,0,0.2);
+    z-index: 999;
+    li {
+      text-align: left;
+    }
+    a {
+      color: #999;
+      display: block;
+      height: auto;
+      padding: 5px 20px;
+      &:hover {
+        color: #444;
+        background-color: #eee;
+        opacity: 1;
+      }
+    }
+  }
+
+  .selected-menu {
+    display: inline-block;
+    line-height: 50px;
+    padding-right: 23px;
+    @include bg('icon-down-arrow.png');
+    background-position: 100% 50%;
+    background-repeat: no-repeat;
+    position: relative;
+    font-weight: 500;
+    color: #444;
   }
 }
 
 .screenshot-menu {
   position: absolute;
-  top: 5px;
-  right: 10px;
+  top: 11px;
+  right: 21px;
 
   .menu-button {
-    background: rgba(47, 47, 47, 0.980392);
-    width: 30px;
-    height: 30px;
+    float: right;
     display: block;
+    margin-top: -1px;
+    padding: 7px 12px;
+    padding-left: 9px;
+    padding-right: 9px;
+    background: none;
+    border-radius: 4px;
+    span {
+      @include bg('icon-shot-options.png');
+      display: inline-block;
+      height: 16px;
+      padding-left: 16px;
+      text-indent: -9999px;
+      background-repeat: no-repeat;
+      background-position: 0 0;
+    }
+    &.active {
+      box-shadow: 1px 1px 1px rgba(0,0,0,0.3);
+      background: #333;
+      border-bottom-left-radius: 0;
+      border-bottom-right-radius: 0;
+    }
   }
 }

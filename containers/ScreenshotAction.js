@@ -16,7 +16,12 @@ export default class ScreenshotAction extends Component {
 
     return (
       <div className="screenshot-menu">
-        <a className="menu-button" onClick={this._onMenuClick.bind(this)}></a>
+        <a
+          className={ this.state.visiting ? 'menu-button active' : 'menu-button' }
+          onClick={this._onMenuClick.bind(this)}
+        >
+        <span></span>
+        </a>
         <div className={ulClassName}>
           <h3>display options</h3>
           <ul>

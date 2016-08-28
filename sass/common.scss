@@ -11,6 +11,7 @@ body {
   color: $black;
   background: $background-white;
   font-family: proxima-nova,"Helvetica Neue",Helvetica,Roboto,Arial,sans-serif;
+  font-size: 14px;
 }
 
 ul {
@@ -23,4 +24,9 @@ li {
 
 #wrap-inner {
   padding: 30px 30px 40px 30px;
+}
+
+a:link, a:visited {
+  color: #3a8bbb;
+  text-decoration: none;
 }

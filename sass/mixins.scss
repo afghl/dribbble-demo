@@ -1,0 +1,4 @@
+@mixin bg($name) {
+  $url:"http://dribble-demo-assets.oss-cn-shenzhen.aliyuncs.com/#{$name}";
+  background-image: url($url);
+}

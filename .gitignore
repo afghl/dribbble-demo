@@ -2,3 +2,4 @@
 /disc
 npm-debug.log
 /static
+*.DS_Store

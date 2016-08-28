@@ -4,6 +4,8 @@ class Header extends Component {
   render() {
     return (
       <header>
+        <a className="main-logo" href="/">
+        </a>
         <p>Dribble</p>
       </header>
     )
