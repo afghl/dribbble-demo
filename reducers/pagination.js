@@ -2,49 +2,34 @@ import merge from 'lodash/merge'
 import union from 'lodash/union'
 import { combineReducers } from 'redux'
 import * as ActionTypes from '../actions'
-// const defaultCategory = [
-//   {
-//     sort: [
-//       { name: 'Popular', key: 'all'},
-//       { name: 'Recent', key: 'recent'},
-//       { name: 'Most Viewed', key: 'views'},
-//       { name: 'Most Commented', key: 'comments'}
-//     ]
-//   },
-//   {
-//     list: [
-//       { name: 'Shots', key: 'all'},
-//       { name: 'Debuts', key: 'debuts'},
-//       { name: 'Team Shots', key: 'teams'},
-//       { name: 'Playoffs', key: 'playoffs'},
-//       { name: 'Rebounds', key: 'rebounds'},
-//       { name: 'Animated GIFs', key: 'animated'},
-//       { name: 'Shots with Attachments', key: 'attachments'}
-//     ]
-//   },
-//   {
-//     timeframe: [
-//       { name: 'Now', key: 'all'},
-//       { name: 'This Past Week', key: 'week'},
-//       { name: 'This Past Month', key: 'month'},
-//       { name: 'This Past Year', key: 'year'},
-//       { name: 'All Time', key: 'ever'}
-//     ]
-//   }
-// ]
+import * as categoryActions from '../actions/category'
 
 const pagination = (state = {
   categories: {
     sort: 'all', list: 'all', timeframe: 'all'
   },
   page: 1,
-  ids: []
+  ids: [],
+  isFetching: false
 }, action) => {
   switch (action.type) {
+    case ActionTypes.SHOTS_REQUEST:
+      return merge({}, state, { isFetching: true })
     case ActionTypes.SHOTS_SUCCESS:
       return merge({}, state, {
         ids: union(state.ids, action.response.result),
-        page: state.page + 1
+        page: state.page + 1,
+        isFetching: false
+      })
+    case categoryActions.UPDATE_CATEGORY:
+      const { categories } = state
+      const { type, key } = action.category
+      const newCate = merge({}, categories, { [type]: key })
+      return Object.assign({}, state, {
+        categories: newCate,
+        ids: [],
+        page: 1,
+        isFetching: false
       })
     default:
       return state

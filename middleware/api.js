@@ -1,22 +1,25 @@
 import { Schema, arrayOf, normalize } from 'normalizr'
 import { camelizeKeys } from 'humps'
 import 'isomorphic-fetch'
+import forOwn from 'lodash/forOwn'
 
 const TOKEN = '5dec7baeb4eb2d56d4b803a2ad8a39dee32de2492732f68fbdb80ceb24ef9ba0'
 const API_ROOT = 'https://api.dribbble.com/v1/'
 
 const getFullUrl = (endpoint, params) => {
   const fullUrl = (endpoint.indexOf(API_ROOT) === -1) ? API_ROOT + endpoint : endpoint
-  return `${fullUrl}?access_token=${TOKEN}&page=${params.page}`
+  let paramString = `access_token=${TOKEN}`
+
+  forOwn(params, (k, v) => { paramString += `&${v}=${k}` })
+  return `${fullUrl}?${paramString}`
 }
 
 // Fetches an API response and normalizes the result JSON according to schema.
 // This makes every API response have the same shape, regardless of how nested it was.
 function callApi(endpoint, params, schema) {
   const fullUrl = getFullUrl(endpoint, params)
-
-  return fetch(fullUrl)
-    .then(response =>
+  return fetch(fullUrl
+    ).then(response =>
       response.json().then(json => ({ json, response }))
     ).then(({ json, response }) => {
       if (!response.ok) {

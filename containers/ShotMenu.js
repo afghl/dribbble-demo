@@ -1,12 +1,19 @@
 import React, { Component, PropTypes } from 'react'
 import menus from '../static_data/menus'
-import MenuItem from '../components/MenuItem'
+import MenuItem from './MenuItem'
 import List from '../components/List'
+import { names, list } from '../static_data/categories'
 
 export default class ShotMenu extends Component {
-  renderMenuItem(menu) {
+  renderMenuItem(name) {
+    const items = list[name]
+
     return(
-      <MenuItem item={menu} />
+      <MenuItem
+        key={name}
+        categoryType={name}
+        items={items}
+      />
     )
   }
 
@@ -14,7 +21,7 @@ export default class ShotMenu extends Component {
     return(
       <div className="shot-menu">
         <List renderItem={this.renderMenuItem}
-              items={menus}
+              items={names}
         />
       </div>
     )
