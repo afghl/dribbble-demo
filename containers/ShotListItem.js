@@ -47,7 +47,7 @@ class ShotListItem extends Component {
       <li className="shot-item">
         <div className="shot-card">
           <div className="shot-image">
-            <img src={images.hidpi}/>
+            <img src={images.normal}/>
           </div>
           {this.renderExtra()}
         </div>
