@@ -62,11 +62,28 @@
   > li {
     float: right;
     margin-left: 5px;
+    padding-left: 18px;
     margin-right: 5px;
+    background-size: 15px 11px;
+    background-repeat: no-repeat;
+    background-position: 2px 1px;
   }
   &:after {
     content: ' ';
     display: table;
     clear: both;
   }
+  .view-count {
+    @include bg('icon-views-sm-2x.png');
+  }
+  .likes-count {
+    @include bg('icon-hearts-2x.png');
+    background-size: 12px 45px;
+    background-position: 3px 1px;
+  }
+  .comments-count {
+    @include bg('icon-comments-2x.png');
+    background-size: 12px 59px;
+  }
+
 }
