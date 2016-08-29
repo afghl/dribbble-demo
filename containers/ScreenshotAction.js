@@ -60,6 +60,7 @@ class ScreenshotAction extends Component {
 
     return () => {
       this.setState({visiting: false})
+
       updateListStyle(styleType)
     }
   }

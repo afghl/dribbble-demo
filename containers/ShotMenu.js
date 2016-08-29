@@ -1,5 +1,4 @@
 import React, { Component, PropTypes } from 'react'
-import menus from '../static_data/menus'
 import MenuItem from './MenuItem'
 import List from '../components/List'
 import { names, list } from '../static_data/categories'

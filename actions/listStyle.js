@@ -1,10 +1,19 @@
 export const UPDATE_LIST_STYLE = 'UPDATE_LIST_STYLE'
 
-export const updateListStyle = (styleType) => {
+const updateStyle = (style, dispatch) => {
   return (dispatch, getState) => {
     dispatch({
       type: UPDATE_LIST_STYLE,
-      listStyle: styleType
+      listStyle: style
     })
+
+    return Promise.resolve()
+  }
+}
+
+export const updateListStyle = (styleType) => {
+  return (dispatch, getState) => {
+    dispatch(updateStyle(styleType, dispatch))
+      .then(() => {console.log('updateStyle');})
   }
 }
