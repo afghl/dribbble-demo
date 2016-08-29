@@ -48,13 +48,13 @@ class MenuItem extends Component {
       <li>
         <a
           onClick={this.updateVisiting}
-          className={'selected-menu'}
+          className='selected-menu'
           href="javascript:;"
         >
           {selectedItem.name}
         </a>
         <List
-          className={ this.state.visiting ? 'sub' : 'sub hide' }
+          className={this.state.visiting ? 'sub' : 'sub hide'}
           renderItem={this.renderItem}
           items={otherItems}
         />

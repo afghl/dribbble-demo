@@ -1,4 +1,3 @@
-// import fetch from 'isomorphic-fetch'
 import { CALL_API } from '../middleware/api'
 import Schemas from '../schemas/index'
 import merge from 'lodash/merge'
@@ -34,7 +33,7 @@ export function loadShots() {
     const params = merge({
       page
     }, categories)
-    
+
     return dispatch(fetchShots(params))
   }
 }

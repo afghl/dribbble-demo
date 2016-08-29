@@ -15,7 +15,9 @@ const pagination = (state = {
 }, action) => {
   switch (action.type) {
     case ActionTypes.SHOTS_REQUEST:
-      return merge({}, state, { isFetching: true })
+      return merge({}, state, {
+        isFetching: true
+      })
     case ActionTypes.SHOTS_SUCCESS:
       return merge({}, state, {
         ids: union(state.ids, action.response.result),
