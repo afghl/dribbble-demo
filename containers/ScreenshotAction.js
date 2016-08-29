@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import items from '../components/ScreenshotItems'
 
 export default class ScreenshotAction extends Component {
   constructor(props) {
@@ -11,9 +12,18 @@ export default class ScreenshotAction extends Component {
     return { visiting: false }
   }
 
+  renderItem(item) {
+    return (
+      <li className={item.name}>
+        {item.component()}
+      </li>
+    )
+  }
+
   render() {
     const ulClassName = this.state.visiting ? 'shot-display' : 'shot-display hide'
 
+    console.log(items);
     return (
       <div className="screenshot-menu">
         <a
@@ -25,8 +35,7 @@ export default class ScreenshotAction extends Component {
         <div className={ulClassName}>
           <h3>display options</h3>
           <ul>
-            <li>large</li>
-            <li>small</li>
+            {items.map(this.renderItem)}
           </ul>
         </div>
       </div>
