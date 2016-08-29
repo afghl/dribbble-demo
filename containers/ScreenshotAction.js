@@ -23,12 +23,11 @@ export default class ScreenshotAction extends Component {
   render() {
     const ulClassName = this.state.visiting ? 'shot-display' : 'shot-display hide'
 
-    console.log(items);
     return (
       <div className="screenshot-menu">
         <a
           className={ this.state.visiting ? 'menu-button active' : 'menu-button' }
-          onClick={this._onMenuClick.bind(this)}
+          onClick={this.onMenuClick.bind(this)}
         >
         <span></span>
         </a>
@@ -42,7 +41,7 @@ export default class ScreenshotAction extends Component {
     )
   }
 
-  _onMenuClick() {
+  onMenuClick() {
     this.setState({visiting: !this.state.visiting})
   }
 }
