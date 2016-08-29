@@ -1,0 +1,105 @@
+
+.screenshot-menu {
+  position: absolute;
+  top: 11px;
+  right: 21px;
+
+  .menu-button {
+    float: right;
+    display: block;
+    margin-top: -1px;
+    padding: 7px 12px;
+    padding-left: 9px;
+    padding-right: 9px;
+    background: none;
+    border-radius: 4px;
+    span {
+      @include bg('icon-shot-options.png');
+      display: inline-block;
+      height: 16px;
+      padding-left: 16px;
+      text-indent: -9999px;
+      background-repeat: no-repeat;
+      background-position: 0 0;
+    }
+    &.active {
+      box-shadow: 1px 1px 1px rgba(0,0,0,0.3);
+      background: #333;
+      border-bottom-left-radius: 0;
+      border-bottom-right-radius: 0;
+    }
+  }
+
+  .shot-display {
+    right: 0;
+    top: 32px;
+    border-radius: 4px;
+    border-top-right-radius: 0;
+    position: absolute;
+    float: left;
+    clear: left;
+    width: 190px;
+    padding-top: 10px;
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-bottom: 15px;
+    background: #333;
+    box-shadow: 1px 1px 1px rgba(0,0,0,0.3);
+    -webkit-background-clip: padding-box;
+    -moz-background-clip: padding-box;
+    background-clip: padding-box;
+    z-index: 999;
+
+    h3 {
+      padding: 0;
+      font-size: 12px;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: .03em;
+      color: #ccc;
+      border: none;
+      margin: 0;
+      background: none;
+    }
+
+    ul {
+      margin: 0;
+      li {
+        float: left;
+        width: 23%;
+        padding-left: 2.666%;
+        &:first-child {
+          padding: 0;
+        }
+        &.current {
+          path {
+            fill: rgb(255, 255, 255);
+          }
+        }
+        a {
+          display: block;
+          height: 42px;
+          width: 100%;
+          margin: 5px 0 0 0;
+          padding: 0;
+          text-align: center;
+          vertical-align: center;
+          background: #505050;
+          border-radius: 2px;
+          font-size: 13px;
+          font-weight: normal;
+          &:hover {
+            background-color: rgb(153, 153, 153);
+          }
+        }
+        svg {
+          height: 42px;
+          width: 42px;
+          path {
+          }
+        }
+      }
+    }
+
+  }
+}

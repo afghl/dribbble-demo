@@ -2,7 +2,7 @@ import merge from 'lodash/merge'
 import values from 'lodash/values'
 
 // Updates an entity cache in response to any action with response.entities.
-function shots(state = {}, action) {
+export default function shots(state = {}, action) {
   if (action.response && action.response.entities) {
     const shots = action.response.entities.shots
 
@@ -10,5 +10,3 @@ function shots(state = {}, action) {
   }
   return state
 }
-
-export default shots

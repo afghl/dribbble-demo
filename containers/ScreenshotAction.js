@@ -1,10 +1,16 @@
 import React, { Component } from 'react'
 import items from '../components/ScreenshotItems'
+import { connect } from 'react-redux'
+import { updateListStyle } from '../actions/listStyle'
 
-export default class ScreenshotAction extends Component {
+const mapStateToProps = (state, ownProps) => {
+  return { currentStyle: state.listStyle }
+}
+
+class ScreenshotAction extends Component {
   constructor(props) {
     super(props)
-
+    this.renderItem = this.renderItem.bind(this)
     this.state = this.getState()
   }
 
@@ -13,8 +19,12 @@ export default class ScreenshotAction extends Component {
   }
 
   renderItem(item) {
+    const { currentStyle } = this.props
     return (
-      <li className={item.name}>
+      <li
+        className={item.name == currentStyle ? `${item.name} current` : item.name}
+        onClick={this.updateSelected(item.name)}
+      >
         {item.component()}
       </li>
     )
@@ -44,4 +54,18 @@ export default class ScreenshotAction extends Component {
   onMenuClick() {
     this.setState({visiting: !this.state.visiting})
   }
+
+  updateSelected(styleType) {
+    const { updateListStyle } = this.props
+
+    return () => {
+      this.setState({visiting: false})
+      updateListStyle(styleType)
+    }
+  }
 }
+
+export default connect(
+  mapStateToProps,
+  { updateListStyle }
+)(ScreenshotAction)

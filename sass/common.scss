@@ -2,6 +2,10 @@ $background-white: #f9f9f9;
 $black: #484848;
 $white: rgba(255,255,255,0.85);
 
+html {
+  -webkit-font-smoothing: subpixel-antialiased;
+}
+
 .hide {
   display: none;
 }
