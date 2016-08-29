@@ -5,9 +5,13 @@ import ShotListItem from './ShotListItem'
 import { loadShots } from '../actions/index'
 
 const mapStateToProps = (state, ownProps) => {
-  const { shots, pagination, isFetching } = state
-  const shotList = pagination.ids.map(id => shots[id])
-  return { shots: shotList, isFetching: pagination.isFetching }
+  const { shots, pagination: { isFetching, ids, failTimes } } = state
+  const shotList = ids.map(id => shots[id])
+  return {
+    shots: shotList,
+    isFetching,
+    failTimes
+  }
 }
 
 class ShotList extends Component {
@@ -26,8 +30,8 @@ class ShotList extends Component {
   }
 
   shouldLoadShots(props) {
-    const { shots: { length }, isFetching } = props
-    return length == 0 && !isFetching
+    const { shots: { length }, isFetching, failTimes } = props
+    return length == 0 && !isFetching && failTimes < 10
   }
 
   renderShotItem(shot) {

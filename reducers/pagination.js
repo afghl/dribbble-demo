@@ -10,7 +10,8 @@ const pagination = (state = {
   },
   page: 1,
   ids: [],
-  isFetching: false
+  isFetching: false,
+  failTimes: 0
 }, action) => {
   switch (action.type) {
     case ActionTypes.SHOTS_REQUEST:
@@ -20,6 +21,13 @@ const pagination = (state = {
         ids: union(state.ids, action.response.result),
         page: state.page + 1,
         isFetching: false
+      })
+    case ActionTypes.SHOTS_FAILURE:
+      let { failTimes } = state
+
+      return merge({}, state, {
+        isFetching: false,
+        failTimes: failTimes + 1
       })
     case categoryActions.UPDATE_CATEGORY:
       const { categories } = state
