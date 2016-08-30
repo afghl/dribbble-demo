@@ -33,8 +33,8 @@ const largeWithoutMeta = () => (
 )
 
 export default [
-  { name: 'small-with-meta', component: smallWithMeta },
-  { name: 'large-with-meta', component: largeWithMeta },
-  { name: 'small-without-meta', component: smallWithoutMeta },
-  { name: 'large-without-meta', component: largeWithoutMeta }
+  { name: 'small-with-meta', size: 'small', withMeta: true, per: 20, component: smallWithMeta },
+  { name: 'large-with-meta', size: 'large', withMeta: true, per: 10, component: largeWithMeta },
+  { name: 'small-without-meta', size: 'small', withMeta: false, per: 20, component: smallWithoutMeta },
+  { name: 'large-without-meta', size: 'large', withMeta: false, per: 10, component: largeWithoutMeta }
 ]

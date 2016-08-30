@@ -3,12 +3,14 @@ import union from 'lodash/union'
 import { combineReducers } from 'redux'
 import * as ActionTypes from '../actions'
 import * as categoryActions from '../actions/category'
+import * as styleActions from '../actions/listStyle'
 
 const pagination = (state = {
   categories: {
     sort: 'all', list: 'all', timeframe: 'all'
   },
   page: 1,
+  per: 10,
   ids: [],
   isFetching: false,
   failTimes: 0
@@ -25,7 +27,7 @@ const pagination = (state = {
         isFetching: false
       })
     case ActionTypes.SHOTS_FAILURE:
-      let { failTimes } = state
+      const { failTimes } = state
 
       return merge({}, state, {
         isFetching: false,
@@ -40,6 +42,12 @@ const pagination = (state = {
         ids: [],
         page: 1,
         isFetching: false
+      })
+    case styleActions.UPDATE_PAGINATION:
+      return Object.assign({}, state, {
+        per: action.per,
+        ids: [],
+        page: 1,
       })
     default:
       return state

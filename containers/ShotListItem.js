@@ -6,14 +6,14 @@ const mapStateToProps = (state) => {
 }
 
 class ShotListItem extends Component {
-  shouldShowExtra() {
-    const { listStyle } = this.props
+  shouldShowMeta() {
+    const { listStyle: withMeta } = this.props
 
-    return listStyle == "large-with-meta"
+    return withMeta
   }
 
   renderExtra() {
-    if (!this.shouldShowExtra())
+    if (!this.shouldShowMeta())
       return
 
     const { viewsCount, likesCount, commentsCount } = this.props.shot
@@ -27,7 +27,7 @@ class ShotListItem extends Component {
     )
   }
   renderAttribution() {
-    if (!this.shouldShowExtra())
+    if (!this.shouldShowMeta())
       return
 
     const { user: { avatarUrl, name } } = this.props.shot

@@ -1,4 +1,5 @@
 export const UPDATE_LIST_STYLE = 'UPDATE_LIST_STYLE'
+export const UPDATE_PAGINATION = 'UPDATE_PAGINATION'
 
 const updateStyle = (style, dispatch) => {
   return (dispatch, getState) => {
@@ -11,9 +12,22 @@ const updateStyle = (style, dispatch) => {
   }
 }
 
-export const updateListStyle = (styleType) => {
+const updatePagination = (per) => {
+  return {
+    type: UPDATE_PAGINATION,
+    per
+  }
+}
+
+export const updateListStyle = (style) => {
   return (dispatch, getState) => {
-    dispatch(updateStyle(styleType, dispatch))
-      .then(() => {console.log('updateStyle');})
+    const prevStyle = getState().listStyle
+
+    dispatch(updateStyle(style, dispatch))
+    .then(() => {
+      if (prevStyle.size != style.size) {
+        dispatch(updatePagination(style.per))
+      }
+    })
   }
 }

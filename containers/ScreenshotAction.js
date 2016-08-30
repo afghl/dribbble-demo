@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import items from '../components/ScreenshotItems'
 import { connect } from 'react-redux'
 import { updateListStyle } from '../actions/listStyle'
+import List from '../components/List'
 
 const mapStateToProps = (state, ownProps) => {
   return { currentStyle: state.listStyle }
@@ -18,34 +19,35 @@ class ScreenshotAction extends Component {
     return { visiting: false }
   }
 
-  renderItem(item) {
-    const { currentStyle } = this.props
+  renderItem(style) {
+    const { currentStyle: { size, withMeta } } = this.props
+
     return (
       <li
-        className={item.name == currentStyle ? `${item.name} current` : item.name}
-        onClick={this.updateSelected(item.name)}
+        className={style.size == size && style.withMeta == withMeta ? 'current' : ''}
+        onClick={this.updateSelected(style)}
+        key={style.name}
       >
-        {item.component()}
+        {style.component()}
       </li>
     )
   }
 
   render() {
-    const ulClassName = this.state.visiting ? 'shot-display' : 'shot-display hide'
-
     return (
       <div className="screenshot-menu">
         <a
-          className={ this.state.visiting ? 'menu-button active' : 'menu-button' }
+          className={this.state.visiting ? 'menu-button active' : 'menu-button'}
           onClick={this.onMenuClick.bind(this)}
         >
-        <span></span>
+          <span></span>
         </a>
-        <div className={ulClassName}>
+        <div className={this.state.visiting ? 'shot-display' : 'shot-display hide'}>
           <h3>display options</h3>
-          <ul>
-            {items.map(this.renderItem)}
-          </ul>
+          <List
+            items={items}
+            renderItem={this.renderItem.bind(this)}
+          />
         </div>
       </div>
     )
@@ -55,13 +57,13 @@ class ScreenshotAction extends Component {
     this.setState({visiting: !this.state.visiting})
   }
 
-  updateSelected(styleType) {
+  updateSelected(style) {
     const { updateListStyle } = this.props
 
     return () => {
       this.setState({visiting: false})
 
-      updateListStyle(styleType)
+      updateListStyle(style)
     }
   }
 }
