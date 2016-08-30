@@ -1,7 +1,11 @@
 var webpack = require('webpack')
 var webpackDevMiddleware = require('webpack-dev-middleware')
 var webpackHotMiddleware = require('webpack-hot-middleware')
-var config = require('./webpack.config')
+if (process.env.NODE_ENV === 'production') {
+  var config = require('./webpack.prod.config')
+} else {
+  var config = require('./webpack.config')
+}
 var express = require('express')
 
 var app = new express()

@@ -4,7 +4,8 @@
   "description": "use React + Redux and dribble api to build this demo repo.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start-prod": "NODE_ENV=production node server.js"
   },
   "repository": {
     "type": "git",
