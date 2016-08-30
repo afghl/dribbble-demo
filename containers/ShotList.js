@@ -43,8 +43,8 @@ class ShotList extends Component {
   }
 
   shouldLoadShots(props) {
-    const { shots: { length }, isFetching, failTimes } = props
-    return length == 0 && !isFetching && failTimes < 10
+    const { shots, isFetching, failTimes } = props
+    return shots.length == 0 && !isFetching && failTimes < 10
   }
 
   renderShotItem(shot) {
@@ -58,7 +58,7 @@ class ShotList extends Component {
   render() {
     const { shots, size, withMeta } = this.props
     let className = `shot-list ${size}`
-    
+
     if (withMeta) {
       className += ' with-meta'
     }
