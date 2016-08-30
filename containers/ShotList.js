@@ -13,7 +13,8 @@ const mapStateToProps = (state, ownProps) => {
       failTimes
     },
     listStyle: {
-      size
+      size,
+      withMeta
     }
   } = state
   const shotList = ids.map(id => shots[id])
@@ -21,7 +22,8 @@ const mapStateToProps = (state, ownProps) => {
     shots: shotList,
     isFetching,
     failTimes,
-    size
+    size,
+    withMeta
   }
 }
 
@@ -54,13 +56,18 @@ class ShotList extends Component {
   }
 
   render() {
-    const { shots, size } = this.props
+    const { shots, size, withMeta } = this.props
+    let className = `shot-list ${size}`
+    
+    if (withMeta) {
+      className += ' with-meta'
+    }
 
     return (
       <List
         renderItem={this.renderShotItem}
         items={shots}
-        className={`shot-list ${size}`}
+        className={className}
       />
     )
   }

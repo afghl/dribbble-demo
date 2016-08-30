@@ -41,6 +41,17 @@ class ShotListItem extends Component {
     )
   }
 
+  renderOver() {
+    const { shot: { title, description } } = this.props
+    return (
+      <div className="shot-over" href="javascript:;">
+        <strong>{title}</strong>
+        <span className="comment" dangerouslySetInnerHTML={{__html: description}}></span>
+        <em className="timestamp">about 7 hours ago</em>
+      </div>
+    )
+  }
+
   render() {
     const { images } = this.props.shot
 
@@ -49,6 +60,7 @@ class ShotListItem extends Component {
         <div className="shot-card">
           <div className="shot-image">
             <img src={images.normal}/>
+            {this.renderOver()}
           </div>
           {this.renderExtra()}
         </div>

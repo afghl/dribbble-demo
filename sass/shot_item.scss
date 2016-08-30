@@ -35,6 +35,91 @@
   }
 }
 
+.shot-over {
+  position: absolute;
+  top: 0;
+  bottom: 10px;
+  left: 0;
+  width: 100%;
+  margin: 0;
+  padding: 20px;
+  font-size: 13px;
+  line-height: 2;
+  text-decoration: none;
+  color: #888;
+  background: #fff;
+  background: rgba(255,255,255,0.96);
+  overflow: hidden;
+  box-sizing: border-box;
+  opacity: 0;
+  transition: opacity .25s ease;
+  -moz-transition: opacity .25s ease;
+  -webkit-transition: opacity .25s ease;
+  &:hover {
+    opacity: 1;
+  }
+  strong {
+    display: block;
+    margin: 0 0 4px 0;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 1.2;
+    color: #444;
+  }
+  .comment {
+    display: block;
+    margin: 0 0 10px 0;
+    font-size: 11px;
+    line-height: 1.4;
+    color: #777;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    p {
+      margin: 0;
+    }
+  }
+  .timestamp {
+    display: block;
+    position: absolute;
+    bottom: 10px;
+    left: 20px;
+    margin: 0 0 3px 0;
+    font-size: 12px;
+    font-weight: normal;
+    font-style: normal;
+    line-height: 1;
+    color: #777;
+  }
+}
+.shot-list.small {
+  .shot-over > .comment {
+    height: 80px;
+  }
+}
+
+.shot-list.large {
+  .shot-over {
+    opacity: 1;
+    padding: 30px;
+    strong {
+      font-size: 16px;
+      margin-bottom: 10px;
+    }
+    .comment {
+      font-size: 14px;
+    }
+    .timestamp {
+      left: 30px;
+      bottom: 20px;
+    }
+  }
+}
+
+.shot-list.with-meta {
+  .shot-over {
+    bottom: 30px;
+  }
+}
 .attribution {
   color: rgb(58, 139, 187);
   font-size: 13px;
