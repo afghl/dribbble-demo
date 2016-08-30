@@ -7,7 +7,6 @@ const mapStateToProps = (state) => {
 }
 
 class Loading extends Component {
-
   render() {
     const { content, isFetching } = this.props
 

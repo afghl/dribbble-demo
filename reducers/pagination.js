@@ -48,6 +48,7 @@ const pagination = (state = {
         per: action.per,
         ids: [],
         page: 1,
+        isFetching: false
       })
     default:
       return state

@@ -2,12 +2,13 @@ import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux'
 
 const mapStateToProps = (state) => {
-  return { listStyle: state.listStyle }
+  const { listStyle } = state
+  return { listStyle }
 }
 
 class ShotListItem extends Component {
   shouldShowMeta() {
-    const { listStyle: withMeta } = this.props
+    const { listStyle: { withMeta } } = this.props
 
     return withMeta
   }

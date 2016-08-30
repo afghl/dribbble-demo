@@ -22,8 +22,13 @@ const updatePagination = (per) => {
 export const updateListStyle = (style) => {
   return (dispatch, getState) => {
     const prevStyle = getState().listStyle
+    const { name, size, withMeta } = style
 
-    dispatch(updateStyle(style, dispatch))
+    dispatch(updateStyle({
+      name,
+      size,
+      withMeta
+    }, dispatch))
     .then(() => {
       if (prevStyle.size != style.size) {
         dispatch(updatePagination(style.per))

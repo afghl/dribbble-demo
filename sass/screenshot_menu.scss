@@ -72,6 +72,9 @@
           padding: 0;
         }
         &.current {
+          a {
+            background-color: #999;
+          }
           path {
             fill: rgb(255, 255, 255);
           }

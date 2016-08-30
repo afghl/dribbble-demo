@@ -1,8 +1,13 @@
-.shot-item {
-  color: rgb(68, 68, 68);
-  margin: 0 15px 30px 15px;
-  width: 420px;
-  float: left;
+.shot-list {
+  > .shot-item {
+    color: rgb(68, 68, 68);
+    margin: 0 15px 30px 15px;
+    width: 420px;
+    float: left;
+  }
+  &.small > .shot-item {
+    width: 220px;
+  }
 }
 
 .shot-card {

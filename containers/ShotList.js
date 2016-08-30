@@ -5,12 +5,23 @@ import ShotListItem from './ShotListItem'
 import { loadShots } from '../actions/index'
 
 const mapStateToProps = (state, ownProps) => {
-  const { shots, pagination: { isFetching, ids, failTimes } } = state
+  const {
+    shots,
+    pagination: {
+      isFetching,
+      ids,
+      failTimes
+    },
+    listStyle: {
+      size
+    }
+  } = state
   const shotList = ids.map(id => shots[id])
   return {
     shots: shotList,
     isFetching,
-    failTimes
+    failTimes,
+    size
   }
 }
 
@@ -43,13 +54,13 @@ class ShotList extends Component {
   }
 
   render() {
-    const { shots } = this.props
+    const { shots, size } = this.props
 
     return (
       <List
         renderItem={this.renderShotItem}
         items={shots}
-        className={"shot-list"}
+        className={`shot-list ${size}`}
       />
     )
   }

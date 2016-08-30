@@ -1,0 +1,19 @@
+.loading {
+  margin: 0 auto;
+  text-align: center;
+  span {
+    @include bg('processing-2x.gif');
+    display: inline-block;
+    padding: 6px 10px 6px 33px;
+    font-weight: bold;
+    border-radius: 4px;
+    font-weight: 500;
+    font-size: 15px;
+    color: #777;
+    background-color: transparent;
+    background-size: 32px 32px;
+    background-repeat: no-repeat;
+    background-position: -6px 50%;
+  }
+
+}
