@@ -12,12 +12,14 @@ class LoadMoreBtn extends Component {
     const { loadShots, isFetching } = this.props
 
     return (
-      <button
-        onClick={loadShots}
-        className={isFetching ? 'load-more hide' : 'load-more'}
-      >
-        LoadMoreBtn
-      </button>
+      <div className="load-more">
+        <button
+          onClick={loadShots}
+          className={isFetching ? 'hide' : ''}
+        >
+          Load More!
+        </button>
+      </div>
     )
   }
 }
