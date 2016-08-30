@@ -1,0 +1,23 @@
+.load-more {
+  margin: 0 auto;
+  margin-top: 30px;
+  width: 44px;
+  button {
+    -webkit-transform: rotate(90deg);
+    -moz-transform: rotate(90deg);
+    -ms-transform: rotate(90deg);
+    -o-transform: rotate(90deg);
+    transform: rotate(90deg);
+    width: 44px;
+    height: 44px;
+    @include bg('icon-next-2x.png');
+    background-color: transparent;
+    border: 0;
+    background-size: 44px 88px;
+    background-repeat: no-repeat;
+    background-position: 0px 0px;
+    &:hover {
+      background-position: 0 -44px;
+    }
+  }
+}

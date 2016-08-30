@@ -4,6 +4,7 @@ import Toolbar from './Toolbar'
 import ShotList from './ShotList'
 import LoadMoreBtn from './LoadMoreBtn'
 import Loading from './Loading'
+import Footer from '../components/Footer'
 
 export default class App extends Component {
   render() {
@@ -16,6 +17,7 @@ export default class App extends Component {
           <Loading content={'Loading shots...'}/>
           <LoadMoreBtn />
         </div>
+        <Footer />
       </div>
     )
 

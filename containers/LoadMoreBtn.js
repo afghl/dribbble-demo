@@ -17,7 +17,6 @@ class LoadMoreBtn extends Component {
           onClick={loadShots}
           className={isFetching ? 'hide' : ''}
         >
-          Load More!
         </button>
       </div>
     )
