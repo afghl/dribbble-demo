@@ -1,5 +1,7 @@
 import React, { Component, PropTypes } from 'react'
+import { updateDisplayMode } from '../actions/displayMode'
 import { connect } from 'react-redux'
+
 
 const mapStateToProps = (state) => {
   const { listStyle } = state
@@ -52,12 +54,20 @@ class ShotListItem extends Component {
     )
   }
 
+  showDetail() {
+    const { updateDisplayMode } = this.props
+    updateDisplayMode('detail')
+  }
+
   render() {
     const { images } = this.props.shot
 
     return (
       <li className="shot-item">
-        <div className="shot-card">
+        <div
+          className="shot-card"
+          onClick={this.showDetail.bind(this)}
+          >
           <div className="shot-image">
             <img src={images.normal}/>
             {this.renderOver()}
@@ -71,5 +81,6 @@ class ShotListItem extends Component {
 }
 
 export default connect(
-  mapStateToProps
+  mapStateToProps,
+  { updateDisplayMode }
 )(ShotListItem)
