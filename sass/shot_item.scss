@@ -35,6 +35,12 @@
     width: 100%;
   }
 }
+.large .shot-image {
+  height: 300px;
+}
+.small .shot-image {
+  height: 150px;
+}
 
 .shot-over {
   position: absolute;
