@@ -2,7 +2,7 @@ import React, { Component, PropTypes } from 'react'
 
 export default class OverLay extends Component {
   render() {
-    const { renderChild, onClose, className } = this.props
+    const { onClose, className } = this.props
 
     return (
       <div
@@ -14,7 +14,6 @@ export default class OverLay extends Component {
           onClick={onClose}
         >
         </a>
-        {renderChild()}
       </div>
     )
   }

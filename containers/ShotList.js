@@ -17,7 +17,9 @@ const mapStateToProps = (state, ownProps) => {
       withMeta
     }
   } = state
+
   const shotList = ids.map(id => shots[id])
+  
   return {
     shots: shotList,
     isFetching,

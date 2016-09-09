@@ -15,26 +15,17 @@ class ShotOverlay extends Component {
     this.updateDisplay = this.updateDisplay.bind(this)
   }
 
-  renderShotDetail() {
-    // TODO
-
-    return (
-      <div>hhee</div>
-    )
-  }
-
   updateDisplay() {
     const { updateDisplayMode } = this.props
     updateDisplayMode('list')
   }
 
   render() {
-    const { renderShotDetail, updateDisplay, props: { shouldHide } } = this
+    const { updateDisplay, props: { shouldHide } } = this
 
     return (
       <Overlay
         className={shouldHide ? 'overlay hide' : 'overlay'}
-        renderChild={renderShotDetail}
         onClose={updateDisplay}
       />
     )
