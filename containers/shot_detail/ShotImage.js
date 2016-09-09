@@ -2,12 +2,14 @@ import React, { Component } from 'react'
 
 export default class ShotDetailShotImage extends Component {
   render() {
+    const { images: { hidpi }, title } = this.props.shot
+
     return (
       <div className="the-shot" >
         <div className="single group">
           <div className="single-grid">
             <div className="single-img">
-              <img src="https://d13yacurqjgara.cloudfront.net/users/57127/screenshots/2950378/becomeseller2.gif" alt="Becomeseller2"/>
+              <img src={hidpi} alt={title} />
             </div>
           </div>
         </div>
