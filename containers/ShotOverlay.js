@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react'
 import Overlay from '../components/Overlay'
 import { connect } from 'react-redux'
-import { updateDisplayMode } from '../actions/displayMode'
+import { updateDisplayMode } from '../actions/shotDetail'
 
 const mapStateToProps = (state, ownProps) => {
   const { displayMode } = state

@@ -1,5 +1,5 @@
 import React, { Component, PropTypes } from 'react'
-import { updateDisplayMode } from '../actions/displayMode'
+import { updateDisplayMode } from '../actions/shotDetail'
 import { connect } from 'react-redux'
 
 const mapStateToProps = (state) => {

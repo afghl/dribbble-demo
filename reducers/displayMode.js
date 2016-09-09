@@ -1,4 +1,4 @@
-import * as ActionType from '../actions/displayMode'
+import * as ActionType from '../actions/shotDetail'
 
 export default function listStyle(state = 'list', action) {
   if (action.type == ActionType.UPDATE_DISPLAY_MODE) {

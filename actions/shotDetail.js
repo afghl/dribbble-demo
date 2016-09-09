@@ -6,5 +6,7 @@ export const updateDisplayMode = (mode) => {
       type: UPDATE_DISPLAY_MODE,
       mode
     })
+
+    return Promise.resolve()
   }
 }

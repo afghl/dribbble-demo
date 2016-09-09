@@ -8,8 +8,19 @@ import ShotImage from './shot_detail/ShotImage'
 import ShotStats from './shot_detail/ShotStats'
 import TagSession from './shot_detail/TagSession'
 
+const mapStateToProps = (state, ownProps) => {
+  return {}
+}
+
 class ShotDetail extends Component {
+
+  canShowDetail() {
+    return true;
+  }
+
   render() {
+    if (!this.canShowDetail()) return null
+
     return (
       <div className="shot-detail">
         <Title />
@@ -30,7 +41,6 @@ class ShotDetail extends Component {
       </div>
     )
   }
-
 }
 
-export default connect()(ShotDetail)
+export default connect(mapStateToProps)(ShotDetail)
