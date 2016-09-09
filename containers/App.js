@@ -6,6 +6,7 @@ import LoadMoreBtn from './LoadMoreBtn'
 import Loading from './Loading'
 import Footer from '../components/Footer'
 import ShotOverlay from './ShotOverlay'
+import ShotDetail from './ShotDetail'
 
 export default class App extends Component {
   render() {
@@ -20,7 +21,7 @@ export default class App extends Component {
         </div>
         <Footer />
         <ShotOverlay>
-          <span>hehes</span>
+          <ShotDetail />
         </ShotOverlay>
       </div>
     )
