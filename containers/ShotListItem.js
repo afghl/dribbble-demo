@@ -50,13 +50,13 @@ class ShotListItem extends Component {
   }
 
   render() {
-    const { shot: { images }, showShotDetail } = this.props
+    const { images } = this.props.shot
 
     return (
       <li className="shot-item">
         <div
           className="shot-card"
-          onClick={showShotDetail}
+          onClick={this.showDetail.bind(this)}
           >
           <div className="shot-image">
             <img src={images.normal}/>
@@ -67,6 +67,12 @@ class ShotListItem extends Component {
           {this.renderAttribution()}
       </li>
     );
+  }
+
+  showDetail() {
+    const { shot: { id }, showShotDetail } = this.props
+
+    showShotDetail(id)
   }
 }
 

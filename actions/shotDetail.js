@@ -1,5 +1,5 @@
 export const UPDATE_DISPLAY_MODE = 'UPDATE_DISPLAY_MODE'
-export const UPDATE_CURRENT_SHOT_ID = 'UPDATE_CURRENT_SHOT_ID'
+export const UPDATE_SELECTED = 'UPDATE_SELECTED'
 
 export const updateDisplayMode = (mode) => {
   return (dispatch, getState) => {
@@ -12,9 +12,10 @@ export const updateDisplayMode = (mode) => {
   }
 }
 
-const updateCurrentShotId = (shotId) => {
+const updateSelected = (shotId) => {
   return {
-    type: UPDATE_CURRENT_SHOT_ID,
+    // TODO: should also get a user id
+    type: UPDATE_SELECTED,
     shotId
   }
 }
@@ -24,7 +25,7 @@ export const showShotDetail = (shotId) => {
     dispatch(
       updateDisplayMode('detail')
     ).then(() => {
-      dispatch(updateCurrentShotId(shotId))
+      dispatch(updateSelected(shotId))
     })
   }
 }
