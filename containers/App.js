@@ -19,7 +19,9 @@ export default class App extends Component {
           <LoadMoreBtn />
         </div>
         <Footer />
-        <ShotOverlay />
+        <ShotOverlay>
+          <span>hehes</span>
+        </ShotOverlay>
       </div>
     )
 

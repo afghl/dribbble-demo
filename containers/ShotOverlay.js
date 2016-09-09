@@ -21,12 +21,13 @@ class ShotOverlay extends Component {
   }
 
   render() {
-    const { updateDisplay, props: { shouldHide } } = this
+    const { updateDisplay, props: { shouldHide, children } } = this
 
     return (
       <Overlay
         className={shouldHide ? 'overlay hide' : 'overlay'}
         onClose={updateDisplay}
+        children={children}
       />
     )
   }
