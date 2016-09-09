@@ -22,8 +22,12 @@ ul {
   padding: 0;
 }
 
-li {
+li, ul, ol {
   list-style: none;
+}
+
+ol {
+  padding: 0;
 }
 
 #wrap-inner {
