@@ -2,26 +2,29 @@ import React, { Component } from 'react'
 
 export default class ShotDetailTitle extends Component {
   render() {
+    console.log(this.props.shot);
+    const { title, user, team, createdAt } = this.props.shot
+
     return (
       <div id="screenshot-title-section" className="full">
+        <div className="picture">
+          <img src={user.avatarUrl} />
+        </div>
+
         <div className="slat-header user ">
-          <h1>Become Seller</h1>
+          <h1>{title}</h1>
 
           <h2 className="shot-byline">
             <span className="attribution ">
-              <span className="shot-byline-user">
-                by <a className="url hoverable" rel="contact" href="javascript:;">Barthelemy Chalvet</a>
-              </span>
+                by <a className="url hoverable" rel="contact" href="javascript:;">{user.name}</a>
             </span>
 
             <span className="attribution">
-              <span className="shot-byline-project">
-                in <a href="/BarthelemyChalvet/projects/311677-MarketMe">MarketMe</a>
-              </span>
+              for <a href="javascript:;">{team.name}</a>
             </span>
 
             <span className="shot-byline-date">
-              on <a href="/shots?date=2016-09-08">Sep 8, 2016</a>
+              on <a href="javascript:;" className="date">Sep 8, 2016</a>
             </span>
           </h2>
 

@@ -35,14 +35,18 @@ class ShotDetail extends Component {
 
     return (
       <div className="shot-detail">
-        <Title />
+        <Title
+          shot={shot}
+        />
         <div className="main-shot zoomable">
           <ShotImage
             shot={shot}
           />
           <div className="screenshot-info-wrapper">
             <div className="screenshot-conversation">
-              <Desc />
+              <Desc
+                shot={shot}
+              />
               <Comments />
             </div>
             <div className="screenshot-meta">

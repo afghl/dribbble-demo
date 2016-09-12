@@ -63,13 +63,13 @@ class MenuItem extends Component {
   }
 
   updateVisiting() {
-    this.setState({visiting: !this.state.visiting})
+    this.setState({ visiting: !this.state.visiting })
   }
 
   updateSelected(key) {
     const { categoryType, updateCategory } = this.props
     return () => {
-      this.setState({visiting: false})
+      this.setState({ visiting: false })
       updateCategory(categoryType, key)
     }
   }
