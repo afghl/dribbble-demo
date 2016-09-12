@@ -12,6 +12,7 @@ class ScreenshotAction extends Component {
   constructor(props) {
     super(props)
     this.renderItem = this.renderItem.bind(this)
+    this.onMenuClick = this.onMenuClick.bind(this)
     this.state = this.getState()
   }
 
@@ -38,7 +39,7 @@ class ScreenshotAction extends Component {
       <div className="screenshot-menu">
         <a
           className={this.state.visiting ? 'menu-button active' : 'menu-button'}
-          onClick={this.onMenuClick.bind(this)}
+          onClick={this.onMenuClick}
         >
           <span></span>
         </a>

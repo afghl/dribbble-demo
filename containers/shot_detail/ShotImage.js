@@ -5,7 +5,7 @@ export default class ShotDetailShotImage extends Component {
     const { images: { hidpi }, title } = this.props.shot
 
     return (
-      <div className="the-shot" >
+      <div className="the-shot">
         <div className="single group">
           <div className="single-grid">
             <div className="single-img">
