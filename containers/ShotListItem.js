@@ -9,7 +9,7 @@ const mapStateToProps = (state) => {
 
 class ShotListItem extends Component {
   shouldShowMeta() {
-    return this.props.withMeta
+    return this.props.listStyle.withMeta
   }
 
   renderExtra() {
