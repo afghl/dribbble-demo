@@ -25,6 +25,5 @@ export default class App extends Component {
         </ShotOverlay>
       </div>
     )
-
   }
 }

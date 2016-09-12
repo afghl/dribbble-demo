@@ -15,6 +15,15 @@ class ShotOverlay extends Component {
     this.updateDisplay = this.updateDisplay.bind(this)
   }
 
+  // disable scroll in body element.
+  componentWillReceiveProps(nextProps) {
+    const { shouldHide } = nextProps
+    let body = document.getElementsByTagName('body')[0]
+
+    body.style.overflow = shouldHide ? 'auto' : 'hidden'
+  }
+
+
   updateDisplay() {
     const { updateDisplayMode } = this.props
     updateDisplayMode('list')
