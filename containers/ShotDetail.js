@@ -50,7 +50,9 @@ class ShotDetail extends Component {
               <Comments />
             </div>
             <div className="screenshot-meta">
-              <ShotStats />
+              <ShotStats
+                shot={shot}
+              />
               <RelatedPlayerShots />
               <TagSession />
             </div>
