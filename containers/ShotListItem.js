@@ -2,9 +2,15 @@ import React, { Component, PropTypes } from 'react'
 import { showShotDetail } from '../actions/shotDetail'
 import { connect } from 'react-redux'
 
-const mapStateToProps = (state) => {
-  const { listStyle } = state
-  return { listStyle }
+const mapStateToProps = (state, ownProps) => {
+  const { listStyle, entities: { users } } = state
+  const userId = ownProps.shot.user
+  const user = users[userId]
+
+  return {
+    listStyle,
+    user
+  }
 }
 
 class ShotListItem extends Component {
@@ -28,7 +34,7 @@ class ShotListItem extends Component {
   renderAttribution() {
     if (!this.shouldShowMeta()) return
 
-    const { user: { avatarUrl, name } } = this.props.shot
+    const { user: { avatarUrl, name } } = this.props
 
     return (
       <h2 className="attribution">

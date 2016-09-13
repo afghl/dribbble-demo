@@ -1,10 +1,11 @@
 import { Schema, arrayOf, normalize } from 'normalizr'
 
-const shotSchema = new Schema('shots', {
-  idAttribute: shot => shot.id
-})
+const userSchema = new Schema('users', { idAttribute: 'id' })
+const shotSchema = new Schema('shots', { idAttribute: 'id' })
 
-// Schemas for Github API responses.
+shotSchema.define({ user: userSchema })
+
+// Schemas for Dribble API responses.
 export default {
   SHOT: shotSchema,
   SHOT_ARRAY: arrayOf(shotSchema)

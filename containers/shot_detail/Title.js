@@ -2,7 +2,8 @@ import React, { Component } from 'react'
 
 export default class ShotDetailTitle extends Component {
   render() {
-    const { title, user, team, createdAt } = this.props.shot
+    const { title, team, createdAt } = this.props.shot
+    const { user } = this.props
 
     return (
       <div id="screenshot-title-section" className="full">

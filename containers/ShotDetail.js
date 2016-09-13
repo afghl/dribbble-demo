@@ -10,15 +10,18 @@ import ShotStats from './shot_detail/ShotStats'
 import TagSession from './shot_detail/TagSession'
 
 const mapStateToProps = (state, ownProps) => {
-  const { selected: { shotId }, shots } = state
+  const { selected: { shotId }, entities: { shots, users } } = state
   if (shotId == null) {
     return { shotId }
   }
   const shot = shots[shotId]
+  // map current user from users array by user_id
+  const user = users[shot.user]
 
   return {
     shotId,
-    shot
+    shot,
+    user
   }
 }
 
@@ -31,12 +34,13 @@ class ShotDetail extends Component {
   render() {
     if (!this.canShowDetail()) return null
 
-    const { shot } = this.props
+    const { shot, user } = this.props
 
     return (
       <div className="shot-detail">
         <Title
           shot={shot}
+          user={user}
         />
         <div className="main-shot zoomable">
           <ShotImage
