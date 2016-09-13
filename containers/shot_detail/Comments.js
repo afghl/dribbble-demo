@@ -4,17 +4,18 @@ import { loadComments } from '../../actions/comments'
 class ShotDetailComments extends Component {
 
   shouldFetchComment(shot) {
-    !shot.comments
+    return !shot.comments
   }
 
   componentWillMount() {
     this.props.loadComments(this.props.shot.id)
   }
-  //
-  // componentWillReceiveProps(nextProps) {
-  //
-  //   this.props.loadComments(nextProps.shot.id)
-  // }
+
+  componentWillReceiveProps(nextProps) {
+    if (this.shouldFetchComment()) {
+      this.props.loadComments(nextProps.shot.id)
+    }
+  }
 
   render() {
     return (

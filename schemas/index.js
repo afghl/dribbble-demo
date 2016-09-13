@@ -13,5 +13,4 @@ export default {
   SHOT_ARRAY: arrayOf(shotSchema),
   COMMENT: commentSchema,
   COMMENT_ARRAY: arrayOf(commentSchema),
-
 }
