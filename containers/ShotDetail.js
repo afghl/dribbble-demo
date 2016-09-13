@@ -10,7 +10,7 @@ import ShotStats from './shot_detail/ShotStats'
 import TagSession from './shot_detail/TagSession'
 
 const mapStateToProps = (state, ownProps) => {
-  const { selected: { shotId }, entities: { shots, users } } = state
+  const { pageStyle: { detail: { shotId } }, entities: { shots, users } } = state
   if (shotId == null) {
     return { shotId }
   }

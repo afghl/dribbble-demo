@@ -14,9 +14,12 @@ const mapStateToProps = (state, ownProps) => {
       ids,
       failTimes
     },
-    listStyle: {
-      size,
-      withMeta
+
+    pageStyle: {
+      list: {
+        size,
+        withMeta
+      }
     }
   } = state
 

@@ -3,12 +3,12 @@ import { showShotDetail } from '../actions/shotDetail'
 import { connect } from 'react-redux'
 
 const mapStateToProps = (state, ownProps) => {
-  const { listStyle, entities: { users } } = state
+  const { pageStyle: { list }, entities: { users } } = state
   const userId = ownProps.shot.user
   const user = users[userId]
 
   return {
-    listStyle,
+    listStyle: list,
     user
   }
 }

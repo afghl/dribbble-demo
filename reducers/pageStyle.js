@@ -18,8 +18,7 @@ const detail = (state = {
   shotId: undefined
 }, action) => {
   if (action.type == shotDetailActions.UPDATE_SELECTED) {
-    const { shotId } = action
-    return { shotId }
+    return { shotId: action.shotId }
   }
   return state
 }
