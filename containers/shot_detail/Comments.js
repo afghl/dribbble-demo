@@ -1,6 +1,18 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { loadComments } from '../../actions/comments'
+import List from '../../components/List'
+
+const mapStateToProps = (state, ownProps) => {
+  const { pageStyle: { detail: { shotId } }, entities: { shots, users, comments } } = state
+  const shot = shots[shotId]
+  return {
+    shot,
+    comments,
+    users,
+  }
+}
+
 class ShotDetailComments extends Component {
 
   shouldFetchComment(shot) {
@@ -18,6 +30,8 @@ class ShotDetailComments extends Component {
   }
 
   render() {
+    const { comments, renderComment } = this.props
+
     return (
       <div id="comments-section">
         <h2 className="count section ">
@@ -28,7 +42,13 @@ class ShotDetailComments extends Component {
             <a className="newest " href="javascript:;">newest</a>
             <a className="liked " href="javascript:;">liked</a>
         </div>
-        <ol className="comments">
+        <List
+          className="comments"
+          items={comments}
+          renderItem={renderComment}
+        />
+
+        <ul className="comments">
           <li className="response comment group ">
             <h2>
               <a className="url hoverable" rel="contact" href="/kalee"><img className="photo" src="https://d13yacurqjgara.cloudfront.net/users/499731/avatars/small/0c0c6bcc5b08375cf9cd57e6f449e1e2.png?1463147584"/> Ka Lee</a>
@@ -61,12 +81,12 @@ class ShotDetailComments extends Component {
               <a className="likes" href="/comments/5559013/likes">Like?</a>
             </p>
           </li>
-        </ol>
+        </ul>
       </div>
     )
   }
 }
 
-export default connect(null, {
+export default connect(mapStateToProps, {
   loadComments
 })(ShotDetailComments)

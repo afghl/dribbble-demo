@@ -51,9 +51,7 @@ class ShotDetail extends Component {
               <Desc
                 shot={shot}
               />
-              <Comments
-                shot={shot}
-              />
+              <Comments />
             </div>
             <div className="screenshot-meta">
               <ShotStats
