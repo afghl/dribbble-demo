@@ -32,10 +32,10 @@ const handleComment = (entities, result) => {
     return merge({}, value, { shot: shotId })
   })
 
-  return {
+  return merge(entities, {
     shots,
     comments
-  }
+  })
 }
 
 const extraShotIdFrom = url => {

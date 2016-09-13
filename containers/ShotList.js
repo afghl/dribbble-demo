@@ -10,11 +10,12 @@ const mapStateToProps = (state, ownProps) => {
       shots
     },
     pagination: {
-      isFetching,
-      ids,
-      failTimes
+      shots: {
+        isFetching,
+        ids,
+        failTimes
+      }
     },
-
     pageStyle: {
       list: {
         size,

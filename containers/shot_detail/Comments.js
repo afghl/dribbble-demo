@@ -2,21 +2,29 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { loadComments } from '../../actions/comments'
 import List from '../../components/List'
+import merge from 'lodash/merge'
 
 const mapStateToProps = (state, ownProps) => {
-  const { pageStyle: { detail: { shotId } }, entities: { shots, users, comments } } = state
+  const {
+    pageStyle: { detail: { shotId } },
+    entities: { shots, users, comments },
+    pagination: { comments: { isFetching, ids, failTimes } }
+  } = state
   const shot = shots[shotId]
+  const commentsList = ids.map(id => comments[id])
+                          .map(comment => merge(comment, { user: users[comment.user] }))
+
   return {
     shot,
-    comments,
-    users,
+    comments: commentsList,
+    isFetching
   }
 }
 
 class ShotDetailComments extends Component {
 
-  shouldFetchComment(shot) {
-    return !shot.comments
+  shouldFetchComment(props) {
+    return !props.shot.comments && !props.isFetching
   }
 
   componentWillMount() {
@@ -24,13 +32,37 @@ class ShotDetailComments extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    if (this.shouldFetchComment()) {
+    if (this.shouldFetchComment(nextProps)) {
       this.props.loadComments(nextProps.shot.id)
     }
   }
 
+  renderComment(comment) {
+    const { user } = comment
+
+    return (
+      <li className="response comment group ">
+        <h2>
+          <a className="url hoverable" rel="contact" href="/kalee">
+            <img className="photo" src={user.avatarUrl}/>
+            {user.name}
+          </a>
+        </h2>
+        <div className="comment-body" dangerouslySetInnerHTML={{__html: comment.body}}></div>
+        <span className="comment-meta-likes">
+          <a className="likes-list" href="javascript:;">{comment.likesCount}</a><span className="hide">likes</span>
+        </span>
+        <p className="comment-meta">
+        <a href="#comment-5558831" className="posted">about 12 hours ago</a>
+          <span className="sep">|</span>
+            <a className="likes" href="javascript:;">Like?</a>
+        </p>
+      </li>
+    )
+  }
+
   render() {
-    const { comments, renderComment } = this.props
+    const { props: { comments }, renderComment } = this
 
     return (
       <div id="comments-section">
@@ -47,41 +79,6 @@ class ShotDetailComments extends Component {
           items={comments}
           renderItem={renderComment}
         />
-
-        <ul className="comments">
-          <li className="response comment group ">
-            <h2>
-              <a className="url hoverable" rel="contact" href="/kalee"><img className="photo" src="https://d13yacurqjgara.cloudfront.net/users/499731/avatars/small/0c0c6bcc5b08375cf9cd57e6f449e1e2.png?1463147584"/> Ka Lee</a>
-            </h2>
-            <div className="comment-body">
-              <p>This is beautiful! Great flow! </p>
-            </div>
-            <span className="comment-meta-likes">
-              <a className="likes-list" href="/comments/5558831/likes">2</a><span className="hide">likes</span>
-            </span>
-            <p className="comment-meta">
-            <a href="#comment-5558831" className="posted">about 12 hours ago</a>
-              <span className="sep">|</span>
-                <a className="likes" href="/comments/5558831/likes">Like?</a>
-            </p>
-          </li>
-          <li id="comment-5559013" className="response comment group " data-user-id="371472">
-            <h2>
-              <a className="url hoverable" rel="contact" href="/borderbabe2412"><img className="photo" src="https://d13yacurqjgara.cloudfront.net/users/371472/avatars/small/a4160ddac21f0f65b96b8871e32a43c0.jpg?1453169928"/> Tayler Dea</a>
-            </h2>
-            <div className="comment-body">
-              <p>Its beautiful!</p>
-            </div>
-            <span className="comment-meta-likes">
-              <a className="likes-list" href="/comments/5559013/likes">1</a><span className="hide">likes</span>
-            </span>
-            <p className="comment-meta">
-              <a href="#comment-5559013" className="posted">about 11 hours ago</a>
-              <span className="sep">|</span>
-              <a className="likes" href="/comments/5559013/likes">Like?</a>
-            </p>
-          </li>
-        </ul>
       </div>
     )
   }

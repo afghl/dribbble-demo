@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import { loadShots } from '../actions/index'
 
 const mapStateToProps = (state) => {
-  const { pagination: { isFetching } } = state
+  const { isFetching } = state.pagination.shots
   return { isFetching }
 }
 

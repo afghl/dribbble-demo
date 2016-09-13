@@ -4,8 +4,30 @@ import { combineReducers } from 'redux'
 import * as ActionTypes from '../actions'
 import * as categoryActions from '../actions/category'
 import * as styleActions from '../actions/listStyle'
+import * as commentsActions from '../actions/comments'
 
-const pagination = (state = {
+const comments = (state = {
+  page: 1,
+  ids: [],
+  isFetching: false,
+  failTimes: 0
+}, action) => {
+  switch (action.type) {
+    case commentsActions.COMMENTS_REQUEST:
+      return merge({}, state, {
+        isFetching: true
+      })
+    case commentsActions.COMMENTS_SUCCESS:
+      return merge({}, state, {
+        ids: union(state.ids, action.response.result),
+        page: state.page + 1,
+        isFetching: false
+      })
+    default:
+      return state
+  }
+}
+const shots = (state = {
   categories: {
     sort: 'all', list: 'all', timeframe: 'all'
   },
@@ -55,4 +77,7 @@ const pagination = (state = {
   }
 }
 
-export default pagination
+export default combineReducers({
+  shots,
+  comments
+})

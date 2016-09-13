@@ -6,7 +6,7 @@ import without from 'lodash/without'
 import { updateCategory } from '../actions/category'
 
 const mapStateToProps = (state, ownProps) => {
-  const { categories } = state.pagination
+  const { categories } = state.pagination.shots
   const { categoryType, items } = ownProps
   const selectedKey = categories[categoryType]
   const selectedItem = find(items, i => i.key == selectedKey)
