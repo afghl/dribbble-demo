@@ -7,6 +7,5 @@ export default function selected(state = {
     const { shotId } = action
     return { shotId }
   }
-
   return state
 }

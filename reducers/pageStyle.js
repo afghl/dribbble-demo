@@ -1,21 +1,9 @@
 import * as ActionType from '../actions/listStyle'
 import merge from 'lodash/merge'
 import * as shotDetailActions from '../actions/shotDetail'
-import * as categoryActions from '../actions/category'
 import { combineReducers } from 'redux'
 
-const category = (state = {
-  sort: 'all',
-  list: 'all',
-  timeframe: 'all'
-}, action) => {
-  if (action.type != categoryActions.UPDATE_CATEGORY) return state
-  const { categories } = state
-  const { type, key } = action.category
-  return Object.assign({}, state, merge({}, categories, { [type]: key }))
-}
-
-const style = (state = {
+const list = (state = {
   size: 'large',
   withMeta: true
 }, action) => {
@@ -45,10 +33,7 @@ const current = (state = 'list', action) => {
 }
 
 export default combineReducers({
-  list: combineReducers({
-    style,
-    category
-  }),
+  list,
   detail,
   current
 })
