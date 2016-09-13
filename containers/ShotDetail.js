@@ -28,7 +28,7 @@ const mapStateToProps = (state, ownProps) => {
 class ShotDetail extends Component {
 
   canShowDetail() {
-    return this.props.shotId != null;
+    return this.props.shotId != null
   }
 
   render() {
@@ -51,7 +51,9 @@ class ShotDetail extends Component {
               <Desc
                 shot={shot}
               />
-              <Comments />
+              <Comments
+                shot={shot}
+              />
             </div>
             <div className="screenshot-meta">
               <ShotStats

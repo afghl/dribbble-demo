@@ -1,6 +1,21 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
+import { loadComments } from '../../actions/comments'
+class ShotDetailComments extends Component {
 
-export default class ShotDetailComments extends Component {
+  shouldFetchComment(shot) {
+    !shot.comments
+  }
+
+  componentWillMount() {
+    this.props.loadComments(this.props.shot.id)
+  }
+  //
+  // componentWillReceiveProps(nextProps) {
+  //
+  //   this.props.loadComments(nextProps.shot.id)
+  // }
+
   render() {
     return (
       <div id="comments-section">
@@ -50,3 +65,7 @@ export default class ShotDetailComments extends Component {
     )
   }
 }
+
+export default connect(null, {
+  loadComments
+})(ShotDetailComments)
