@@ -26,6 +26,7 @@ function callApi(endpoint, params, schema) {
         return Promise.reject(json)
       }
 
+      console.log(response);
       const camelizedJson = camelizeKeys(json)
       return Object.assign({}, normalize(camelizedJson, schema))
     })
