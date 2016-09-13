@@ -26,23 +26,27 @@ export default class ShotDetailShotStats extends Component {
             <span className="stats-label">Bucket</span>
           </a>
           <span className="buckets-count stats-num" href="javascript:;"> {bucketsCount} buckets </span>
-      </li>
-      <li className="shot-stats-colors">
-        <a className="stats-action" href="javascript:;">
-          <img width="20" height="20 " src="https://d13yacurqjgara.cloudfront.net/assets/icon-shotstat-drop-0152bfcbd3cb7ed50e73b830df47c754f061a376a662eac8841ad45316598d97.png" alt="Icon shotstat drop"/>
-        </a>
-        <ul className="color-chips group">
-          <li className="color"><span>#FFFFFF</span></li>
-          <li className="color"><span>#FFD21F</span></li>
-          <li className="color"><span>#F89B23</span></li>
-          <li className="color"><span>#686A47</span></li>
-          <li className="color"><span>#EE524E</span></li>
-          <li className="color"><span>#9F9FB9</span></li>
-          <li className="color"><span>#FDE4D1</span></li>
-          <li className="color"><span>#F8D39B</span></li>
-        </ul>
-      </li>
-    </ul>
+        </li>
+        <li className="shot-stats-colors">
+          <a className="stats-action" href="javascript:;">
+            <img width="20" height="20 " src="https://d13yacurqjgara.cloudfront.net/assets/icon-shotstat-drop-0152bfcbd3cb7ed50e73b830df47c754f061a376a662eac8841ad45316598d97.png" alt="Icon shotstat drop"/>
+          </a>
+          <ul className="color-chips group">
+            <li className="color"><span style={this.colorStyle('#FFFFFF')}></span></li>
+            <li className="color"><span style={this.colorStyle('#FFD21F')}></span></li>
+            <li className="color"><span style={this.colorStyle('#F89B23')}></span></li>
+            <li className="color"><span style={this.colorStyle('#686A47')}></span></li>
+            <li className="color"><span style={this.colorStyle('#EE524E')}></span></li>
+            <li className="color"><span style={this.colorStyle('#9F9FB9')}></span></li>
+            <li className="color"><span style={this.colorStyle('#FDE4D1')}></span></li>
+            <li className="color"><span style={this.colorStyle('#F8D39B')}></span></li>
+          </ul>
+        </li>
+      </ul>
     )
+  }
+
+  colorStyle(backgroundColor) {
+    return { backgroundColor }
   }
 }

@@ -54,7 +54,9 @@ class ShotDetail extends Component {
                 shot={shot}
               />
               <RelatedPlayerShots />
-              <TagSession />
+              <TagSession
+                shot={shot}
+              />
             </div>
           </div>
         </div>

@@ -299,7 +299,6 @@ ul.color-chips {
       width: 100%;
       height: 12px;
       text-indent: -9999px;
-      background-color: #F89B23;
 
       &:hover {
         background-image: none;
@@ -364,7 +363,7 @@ ol.more-thumbs {
 .tags-section {
   padding-bottom: 20px;
 
-  ol.popular-tags {
+  .popular-tags {
     li {
       display: inline-block;
       margin: 0 10px 0 0;

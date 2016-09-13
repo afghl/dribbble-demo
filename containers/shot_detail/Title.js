@@ -18,10 +18,7 @@ export default class ShotDetailTitle extends Component {
             <span className="attribution ">
                 by <a className="url hoverable" rel="contact" href="javascript:;">{user.name}</a>
             </span>
-
-            <span className="attribution">
-              for <a href="javascript:;">{team.name}</a>
-            </span>
+            {this.renderTeam()}
 
             <span className="shot-byline-date">
               on <a href="javascript:;" className="date">Sep 8, 2016</a>
@@ -30,6 +27,17 @@ export default class ShotDetailTitle extends Component {
 
         </div>
       </div>
+    )
+  }
+
+  renderTeam() {
+    const { team } = this.props.shot
+    if (!team) return
+
+    return (
+      <span className="attribution">
+        for <a href="javascript:;">{team.name}</a>
+      </span>
     )
   }
 }
