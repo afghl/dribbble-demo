@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 
 export default class ShotDetailTitle extends Component {
   render() {
-    console.log(this.props.shot);
     const { title, user, team, createdAt } = this.props.shot
 
     return (

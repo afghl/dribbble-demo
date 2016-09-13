@@ -8,12 +8,12 @@ export default class ShotDetailComments extends Component {
           7 Responses
         </h2>
         <div className="comments-sort">
-            <a className="oldest selected" href="/shots/2950378-Become-Seller?comments_sort=oldest">oldest</a>
-            <a className="newest " href="/shots/2950378-Become-Seller?comments_sort=newest">newest</a>
-            <a className="liked " href="/shots/2950378-Become-Seller?comments_sort=liked">liked</a>
+            <a className="oldest selected" href="javascript:;">oldest</a>
+            <a className="newest " href="javascript:;">newest</a>
+            <a className="liked " href="javascript:;">liked</a>
         </div>
-        <ol id="comments" className="comments">
-          <li id="comment-5558831" className="response comment group " data-user-id="499731">
+        <ol className="comments">
+          <li className="response comment group ">
             <h2>
               <a className="url hoverable" rel="contact" href="/kalee"><img className="photo" src="https://d13yacurqjgara.cloudfront.net/users/499731/avatars/small/0c0c6bcc5b08375cf9cd57e6f449e1e2.png?1463147584"/> Ka Lee</a>
             </h2>
