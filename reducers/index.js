@@ -1,5 +1,5 @@
 import pagination from './pagination'
-import shots from './shots'
+import entities from './entities'
 import listStyle from './listStyle'
 import displayMode from './displayMode'
 import selected from './selected'
@@ -7,7 +7,7 @@ import { combineReducers } from 'redux'
 
 const rootReducer = combineReducers({
   pagination,
-  shots,
+  entities,
   displayMode,
   listStyle,
   selected

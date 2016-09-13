@@ -6,7 +6,9 @@ import { loadShots } from '../actions/index'
 
 const mapStateToProps = (state, ownProps) => {
   const {
-    shots,
+    entities: {
+      shots
+    },
     pagination: {
       isFetching,
       ids,
@@ -19,7 +21,7 @@ const mapStateToProps = (state, ownProps) => {
   } = state
 
   const shotList = ids.map(id => shots[id])
-  
+
   return {
     shots: shotList,
     isFetching,
