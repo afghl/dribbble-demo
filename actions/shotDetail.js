@@ -14,7 +14,6 @@ export const updateDisplayMode = (mode) => {
 
 const updateSelected = (shotId) => {
   return {
-    // TODO: should also get a user id
     type: UPDATE_SELECTED,
     shotId
   }

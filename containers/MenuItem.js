@@ -3,31 +3,19 @@ import List from '../components/List'
 import { connect } from 'react-redux'
 import find from 'lodash/find'
 import without from 'lodash/without'
-import { updateCategory } from '../actions/category'
-
-const mapStateToProps = (state, ownProps) => {
-  const { categories } = state.pagination.shots
-  const { categoryType, items } = ownProps
-  const selectedKey = categories[categoryType]
-  const selectedItem = find(items, i => i.key == selectedKey)
-
-  return {
-    selectedItem,
-    otherItems: without(items, selectedItem)
-  }
-}
+import { updateShotsParams } from '../actions/category'
 
 class MenuItem extends Component {
-  getState() {
-    return { visiting: false }
-  }
-
   constructor(props) {
     super(props)
     this.renderItem = this.renderItem.bind(this)
     this.updateVisiting = this.updateVisiting.bind(this)
     this.updateSelected = this.updateSelected.bind(this)
     this.state = this.getState()
+  }
+
+  getState() {
+    return { visiting: false, selectedKey: 'all' }
   }
 
   renderItem(item) {
@@ -42,7 +30,10 @@ class MenuItem extends Component {
   }
 
   render() {
-    const { selectedItem, otherItems } = this.props
+    const [
+      selectedItem,
+      otherItems
+    ] = this.filterItem(this.props.items, this.state.selectedKey)
 
     return (
       <li>
@@ -67,15 +58,27 @@ class MenuItem extends Component {
   }
 
   updateSelected(key) {
-    const { categoryType, updateCategory } = this.props
+    const { categoryType, updateShotsParams } = this.props
+
     return () => {
-      this.setState({ visiting: false })
-      updateCategory(categoryType, key)
+      this.setState({
+        visiting: false,
+        selectedKey: key
+      })
+      updateShotsParams({[categoryType]: key})
     }
+  }
+
+  filterItem(items, key) {
+    const selectedItem = find(items, i => i.key == key)
+    return [
+      selectedItem,
+      without(items, selectedItem)
+    ]
   }
 }
 
 export default connect(
-  mapStateToProps,
-  { updateCategory }
+  null,
+  { updateShotsParams }
 )(MenuItem)

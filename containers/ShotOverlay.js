@@ -25,8 +25,7 @@ class ShotOverlay extends Component {
 
 
   updateDisplay() {
-    const { updateDisplayMode } = this.props
-    updateDisplayMode('list')
+    this.props.updateDisplayMode('list')
   }
 
   render() {

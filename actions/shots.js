@@ -5,6 +5,7 @@ import merge from 'lodash/merge'
 export const SHOTS_REQUEST = 'SHOTS_REQUEST'
 export const SHOTS_SUCCESS = 'SHOTS_SUCCESS'
 export const SHOTS_FAILURE = 'SHOTS_FAILURE'
+export const UPDATE_SHOTS_PARAMS = 'UPDATE_SHOTS_PARAMS'
 
 // Relies on the custom API middleware defined in ../middleware/api.js.
 function fetchShots(params) {
@@ -18,10 +19,6 @@ function fetchShots(params) {
   }
 }
 
-// Meet our first thunk action creator!
-// Though its insides are different, you would use it just like any other action creator:
-// store.dispatch(loadShots('reactjs'))
-
 export function loadShots() {
 
   // Thunk middleware knows how to handle functions.
@@ -29,11 +26,17 @@ export function loadShots() {
   // thus making it able to dispatch actions itself.
 
   return (dispatch, getState) => {
-    const { pagination: { page, categories } } = getState()
-    const params = merge({
-      page
-    }, categories)
+    const { page, params } = getState().pagination.shots
 
-    return dispatch(fetchShots(params))
+    return dispatch(fetchShots(merge({ page }, params)))
+  }
+}
+
+export const updateShotsParams = (params) => {
+  return (dispatch, getState) => {
+    dispatch({
+      type: UPDATE_SHOTS_PARAMS,
+      params
+    })
   }
 }

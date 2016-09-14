@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import List from '../components/List'
 import ShotListItem from './ShotListItem'
-import { loadShots } from '../actions/index'
+import { loadShots } from '../actions/shots'
 
 const mapStateToProps = (state, ownProps) => {
   const {

@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { loadShots } from '../actions/index'
+import { loadShots } from '../actions/shots'
 
 const mapStateToProps = (state) => {
   const { isFetching } = state.pagination.shots
