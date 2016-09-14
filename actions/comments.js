@@ -4,6 +4,7 @@ import Schemas from '../schemas/index'
 export const COMMENTS_REQUEST = 'COMMENTS_REQUEST'
 export const COMMENTS_SUCCESS = 'COMMENTS_SUCCESS'
 export const COMMENTS_FAILURE = 'COMMENTS_FAILURE'
+export const UPDATE_COMMENTS_PARAMS = 'UPDATE_COMMENTS_PARAMS'
 
 const fetchComments = params => {
   return {
@@ -19,5 +20,14 @@ const fetchComments = params => {
 export const loadComments = shotId => {
   return (dispatch, getState) => {
     return dispatch(fetchComments({ shotId }))
+  }
+}
+
+
+export const updateCommentsParams = params => {
+  return (dispatch, getState) => {
+    dispatch({
+      type: UPDATE_COMMENTS_PARAMS,
+      params})
   }
 }

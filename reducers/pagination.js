@@ -5,6 +5,7 @@ import * as shotsActions from '../actions/shots'
 import * as commentsActions from '../actions/comments'
 
 const comments = (state = {
+  params: { shotId: undefined },
   page: 1,
   ids: [],
   isFetching: false,
@@ -19,6 +20,19 @@ const comments = (state = {
       return merge({}, state, {
         ids: union(state.ids, action.response.result),
         page: state.page + 1,
+        isFetching: false
+      })
+    case commentsActions.COMMENTS_FAILURE:
+      return merge({}, state, {
+        isFetching: false,
+        failTimes: state.failTimes + 1
+      })
+    case commentsActions.UPDATE_COMMENTS_PARAMS:
+      // TODO: fetch ids if cached
+      return Object.assign({}, state, {
+        params: merge({}, state.params, action.params),
+        ids: [],
+        page: 1,
         isFetching: false
       })
     default:
@@ -46,11 +60,9 @@ const shots = (state = {
         isFetching: false
       })
     case shotsActions.SHOTS_FAILURE:
-      const { failTimes } = state
-
       return merge({}, state, {
         isFetching: false,
-        failTimes: failTimes + 1
+        failTimes: state.failTimes + 1
       })
     case shotsActions.UPDATE_SHOTS_PARAMS:
       return Object.assign({}, state, {

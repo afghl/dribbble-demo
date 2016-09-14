@@ -3,7 +3,7 @@ import List from '../components/List'
 import { connect } from 'react-redux'
 import find from 'lodash/find'
 import without from 'lodash/without'
-import { updateShotsParams } from '../actions/category'
+import { updateShotsParams } from '../actions/shots'
 
 class MenuItem extends Component {
   constructor(props) {
