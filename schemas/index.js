@@ -6,6 +6,7 @@ const commentSchema = new Schema('comments', { idAttribute: 'id' })
 
 shotSchema.define({ user: userSchema })
 commentSchema.define({ user: userSchema })
+userSchema.define({ shots: arrayOf(shotSchema)})
 
 // Schemas for Dribble API responses.
 export default {

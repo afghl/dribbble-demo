@@ -68,7 +68,7 @@ class ShotDetailComments extends Component {
     return (
       <div id="comments-section">
         <h2 className="count section ">
-          7 Responses
+          {comments.length} Responses
         </h2>
         <div className="comments-sort">
             <a className="oldest selected" href="javascript:;">oldest</a>

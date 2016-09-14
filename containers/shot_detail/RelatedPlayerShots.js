@@ -2,14 +2,14 @@ import React, { Component } from 'react'
 
 export default class ShotDetailRelatedPlayerShots extends Component {
   render() {
+    const { user } = this.props
+
     return (
       <div className="related-player-shots">
         <h3 className="meta-head">
-          <a href="/JustinMezzell">
-            More from Justin Mezzell
-          </a>
+          More from {user.name}
         </h3>
-        <ol className="more-thumbs">
+        <ul className="more-thumbs">
           <li className="multi-thumb">
             <a href="/shots/2948321-Super-Team-Deluxe-Super-Club">
               <img alt="Super™ Team™ Deluxe™ Super Club™™" src="https://d13yacurqjgara.cloudfront.net/users/13774/screenshots/2948321/superclub_teaser.png"/>
@@ -30,7 +30,7 @@ export default class ShotDetailRelatedPlayerShots extends Component {
               <img alt="On Sticker Mule Marketplace" src="https://d13yacurqjgara.cloudfront.net/users/13774/screenshots/2908014/stickers_teaser.png"/>
             </a>
           </li>
-        </ol>
+        </ul>
       </div>
     )
   }

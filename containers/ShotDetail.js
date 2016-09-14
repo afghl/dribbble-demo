@@ -57,7 +57,9 @@ class ShotDetail extends Component {
               <ShotStats
                 shot={shot}
               />
-              <RelatedPlayerShots />
+              <RelatedPlayerShots
+                user={user}
+              />
               <TagSession
                 shot={shot}
               />
