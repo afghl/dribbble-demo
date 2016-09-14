@@ -30,9 +30,9 @@ export const showShotDetail = (shotId) => {
     dispatch(
       updateDisplayMode('detail')
     ).then(() => {
-      dispatch(updateSelected(shotId))
-    }).then(() => {
       dispatch(updateCommentsParams({shotId}))
+    }).then(() => {
+      dispatch(updateSelected(shotId))
     })
   }
 }

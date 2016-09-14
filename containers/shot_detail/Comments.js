@@ -6,9 +6,10 @@ import merge from 'lodash/merge'
 
 const mapStateToProps = (state, ownProps) => {
   const {
-    pageStyle: { detail: { shotId } },
     entities: { shots, users, comments },
-    pagination: { comments: { isFetching, ids, failTimes } }
+    pagination: {
+      comments: { params: { shotId }, isFetching, ids, failTimes }
+    }
   } = state
   const shot = shots[shotId]
   const commentsList = ids.map(id => comments[id])
