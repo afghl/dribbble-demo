@@ -26,7 +26,7 @@ export const updateListStyle = (style) => {
     }, dispatch))
     .then(() => {
       if (prevStyle.size != style.size) {
-        dispatch(updateShotsParams({per: style.per}))
+        dispatch(updateShotsParams({per_page: style.per}))
       }
     })
   }
