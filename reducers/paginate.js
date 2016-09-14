@@ -3,15 +3,24 @@ import union from 'lodash/union'
 
 // Creates a reducer managing pagination, given the action types to handle,
 // and a function telling how to extract the key from an action.
-export default ({ types, defaultParams }) => {
-  // if (!Array.isArray(types) || types.length !== 3) {
-  //   throw new Error('Expected types to be an array of three elements.')
-  // }
+export default ({ types, defaultParams, more }) => {
+  if (!Array.isArray(types) || types.length !== 3) {
+    throw new Error('Expected types to be an array of three elements.')
+  }
   if (!types.every(t => typeof t === 'string')) {
     throw new Error('Expected types to be strings.')
   }
 
-  const [ requestType, successType, failureType, updateParams ] = types
+  const [ requestType, successType, failureType] = types
+
+  const handleMore = (state, action, more) => {
+    const handler = more[action.type]
+    if (!handler) {
+      return state
+    }
+
+    return handler(state, action)
+  }
 
   return (state = {
     params: defaultParams,
@@ -36,15 +45,8 @@ export default ({ types, defaultParams }) => {
           isFetching: false,
           failTimes: state.failTimes + 1
         })
-      case updateParams:
-        return Object.assign({}, state, {
-          params: merge({}, state.params, action.params),
-          ids: [],
-          page: 1,
-          isFetching: false
-        })
       default:
-        return state
+        return handleMore(state, action, more)
     }
   }
 }

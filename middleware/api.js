@@ -10,7 +10,7 @@ const getFullUrl = (endpoint, params) => {
   const fullUrl = (endpoint.indexOf(API_ROOT) === -1) ? API_ROOT + endpoint : endpoint
   let paramString = `access_token=${TOKEN}`
 
-  forOwn(params, (k, v) => { paramString += `&${v}=${k}` })
+  forOwn(params, (v, k) => { paramString += `&${k}=${v}` })
   return `${fullUrl}?${paramString}`
 }
 
@@ -18,7 +18,7 @@ const getFullUrl = (endpoint, params) => {
 // This makes every API response have the same shape, regardless of how nested it was.
 function callApi(endpoint, params, schema) {
   const fullUrl = getFullUrl(endpoint, params)
-  console.log(fullUrl);
+
   return fetch(fullUrl
     ).then(response =>
       response.json().then(json => ({ json, response }))
