@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import List from '../../components/List'
 import { loadRelated } from '../../actions/relatedShots'
+import * as status from '../../reducers/paginate'
 
 const mapStateToProps = (state, ownProps) => {
   const {
@@ -26,7 +27,7 @@ class ShotDetailRelatedPlayerShots extends Component {
   }
 
   componentWillMount() {
-    if (this.shouldFetchRelated(nextProps)) {
+    if (this.shouldFetchRelated(this.props)) {
       this.props.loadRelated(this.props.user.id)
     }
   }

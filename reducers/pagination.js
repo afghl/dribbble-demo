@@ -49,7 +49,7 @@ export default combineReducers({
     ],
     defaultParams: { userId: undefined, per_page: 4 },
     more: {
-      [commentsActions.UPDATE_RELATED_PARAMS]: defaultHandle
+      [relatedActions.UPDATE_RELATED_PARAMS]: defaultHandle
     }
   })
 })

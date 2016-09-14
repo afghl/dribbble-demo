@@ -58,6 +58,7 @@ class ShotListItem extends Component {
   render() {
     const { images } = this.props.shot
 
+    // TODO: render high quality image
     return (
       <li className="shot-item">
         <div
@@ -65,7 +66,7 @@ class ShotListItem extends Component {
           onClick={this.showDetail.bind(this)}
           >
           <div className="shot-image">
-            <img src={images.normal}/>
+            <img src={images.teaser}/>
             {this.renderOver()}
           </div>
           {this.renderExtra()}
@@ -77,7 +78,6 @@ class ShotListItem extends Component {
 
   showDetail() {
     const { shot: { id, user }, showShotDetail } = this.props
-
     showShotDetail(id, user)
   }
 }
