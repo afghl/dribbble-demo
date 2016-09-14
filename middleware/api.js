@@ -18,7 +18,7 @@ const getFullUrl = (endpoint, params) => {
 // This makes every API response have the same shape, regardless of how nested it was.
 function callApi(endpoint, params, schema) {
   const fullUrl = getFullUrl(endpoint, params)
-
+  console.log(fullUrl);
   return fetch(fullUrl
     ).then(response =>
       response.json().then(json => ({ json, response }))
