@@ -26,8 +26,7 @@ const mapStateToProps = (state, ownProps) => {
 class ShotDetailComments extends Component {
 
   shouldFetchComment(props) {
-    const shotChosen = !!props.shot
-    return shotChosen && props.fetchStatus == status.PENDING
+    return !!props.shot && props.fetchStatus == status.PENDING
   }
 
   componentWillMount() {

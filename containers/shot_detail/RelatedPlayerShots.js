@@ -21,8 +21,21 @@ const mapStateToProps = (state, ownProps) => {
 
 class ShotDetailRelatedPlayerShots extends Component {
 
+  shouldFetchRelated(props) {
+    return !!props.user && props.fetchStatus == status.PENDING
+  }
+
   componentWillMount() {
-    this.props.loadRelated(this.props.user.id)
+    if (this.shouldFetchRelated(nextProps)) {
+      this.props.loadRelated(this.props.user.id)
+    }
+  }
+
+  // TODO: load related should not need user_id params
+  componentWillReceiveProps(nextProps) {
+    if (this.shouldFetchRelated(nextProps)) {
+      this.props.loadRelated(nextProps.user.id)
+    }
   }
 
   renderItem(shot) {

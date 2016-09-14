@@ -1,4 +1,5 @@
 import { updateCommentsParams } from './comments'
+import { updateRelatedParams } from './relatedShots'
 
 export const UPDATE_DISPLAY_MODE = 'UPDATE_DISPLAY_MODE'
 export const UPDATE_SELECTED = 'UPDATE_SELECTED'
@@ -34,7 +35,7 @@ export const showShotDetail = (shotId, userId) => {
     }).then(() => {
       dispatch(updateCommentsParams({shotId}))
     }).then(() => {
-      dispatch(updateCommentsParams({userId}))
+      dispatch(updateRelatedParams({userId}))
     })
   }
 }
