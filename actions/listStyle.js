@@ -1,3 +1,5 @@
+import { updateShotsParams } from './shots'
+
 export const UPDATE_LIST_STYLE = 'UPDATE_LIST_STYLE'
 export const UPDATE_PAGINATION = 'UPDATE_PAGINATION'
 
@@ -12,16 +14,9 @@ const updateStyle = (style, dispatch) => {
   }
 }
 
-const updatePagination = (per) => {
-  return {
-    type: UPDATE_PAGINATION,
-    per
-  }
-}
-
 export const updateListStyle = (style) => {
   return (dispatch, getState) => {
-    const prevStyle = getState().listStyle
+    const prevStyle = getState().pageStyle.list
     const { name, size, withMeta } = style
 
     dispatch(updateStyle({
@@ -31,7 +26,7 @@ export const updateListStyle = (style) => {
     }, dispatch))
     .then(() => {
       if (prevStyle.size != style.size) {
-        dispatch(updatePagination(style.per))
+        dispatch(updateShotsParams({per: style.per}))
       }
     })
   }

@@ -5,7 +5,7 @@ import { updateListStyle } from '../actions/listStyle'
 import List from '../components/List'
 
 const mapStateToProps = (state, ownProps) => {
-  return { currentStyle: state.listStyle }
+  return { currentStyle: state.pageStyle.list }
 }
 
 class ScreenshotAction extends Component {

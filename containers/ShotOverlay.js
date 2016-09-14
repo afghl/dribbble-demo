@@ -4,9 +4,9 @@ import { connect } from 'react-redux'
 import { updateDisplayMode } from '../actions/shotDetail'
 
 const mapStateToProps = (state, ownProps) => {
-  const { displayMode } = state
-  const shouldHide = displayMode != 'detail'
-  return { shouldHide }
+  const { pageStyle: { current } } = state
+  const shouldShow = current == 'detail'
+  return { shouldShow }
 }
 
 class ShotOverlay extends Component {
@@ -17,24 +17,23 @@ class ShotOverlay extends Component {
 
   // disable scroll in body element.
   componentWillReceiveProps(nextProps) {
-    const { shouldHide } = nextProps
+    const { shouldShow } = nextProps
     let body = document.getElementsByTagName('body')[0]
 
-    body.style.overflow = shouldHide ? 'auto' : 'hidden'
+    body.style.overflow = shouldShow ? 'hidden' : 'auto'
   }
 
 
   updateDisplay() {
-    const { updateDisplayMode } = this.props
-    updateDisplayMode('list')
+    this.props.updateDisplayMode('list')
   }
 
   render() {
-    const { updateDisplay, props: { shouldHide, children } } = this
+    const { updateDisplay, props: { shouldShow, children } } = this
 
     return (
       <Overlay
-        className={shouldHide ? 'overlay hide' : 'overlay'}
+        className={shouldShow ? 'overlay' : 'overlay hide'}
         onClose={updateDisplay}
         children={children}
       />
