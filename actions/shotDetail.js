@@ -25,14 +25,16 @@ const updateSelected = (shotId) => {
   }
 }
 
-export const showShotDetail = (shotId) => {
+export const showShotDetail = (shotId, userId) => {
   return (dispatch, getState) => {
     dispatch(
       updateDisplayMode('detail')
     ).then(() => {
+      dispatch(updateSelected(shotId))
+    }).then(() => {
       dispatch(updateCommentsParams({shotId}))
     }).then(() => {
-      dispatch(updateSelected(shotId))
+      dispatch(updateCommentsParams({userId}))
     })
   }
 }

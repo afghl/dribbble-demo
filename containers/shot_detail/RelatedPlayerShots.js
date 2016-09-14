@@ -7,14 +7,14 @@ const mapStateToProps = (state, ownProps) => {
   const {
     entities: { shots },
     pagination: {
-      related: { isFetching, ids, failTimes }
+      related: { fetchStatus, ids, failTimes }
     }
   } = state
   const related = ids.map(id => shots[id])
 
   return {
     related,
-    isFetching,
+    fetchStatus,
     failTimes
   }
 }

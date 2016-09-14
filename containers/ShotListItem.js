@@ -76,9 +76,9 @@ class ShotListItem extends Component {
   }
 
   showDetail() {
-    const { shot: { id }, showShotDetail } = this.props
+    const { shot: { id, user }, showShotDetail } = this.props
 
-    showShotDetail(id)
+    showShotDetail(id, user)
   }
 }
 

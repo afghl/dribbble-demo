@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { loadComments } from '../../actions/comments'
+import * as status from '../../reducers/paginate'
 import List from '../../components/List'
 import merge from 'lodash/merge'
 
@@ -8,7 +9,7 @@ const mapStateToProps = (state, ownProps) => {
   const {
     entities: { shots, users, comments },
     pagination: {
-      comments: { params: { shotId }, isFetching, ids, failTimes }
+      comments: { params: { shotId }, fetchStatus, ids, failTimes }
     }
   } = state
   const shot = shots[shotId]
@@ -18,18 +19,21 @@ const mapStateToProps = (state, ownProps) => {
   return {
     shot,
     comments: commentsList,
-    isFetching
+    fetchStatus
   }
 }
 
 class ShotDetailComments extends Component {
 
   shouldFetchComment(props) {
-    return !props.shot.comments && !props.isFetching
+    const shotChosen = !!props.shot
+    return shotChosen && props.fetchStatus == status.PENDING
   }
 
   componentWillMount() {
-    this.props.loadComments(this.props.shot.id)
+    if (this.shouldFetchComment(this.props)) {
+      this.props.loadComments(this.props.shot.id)
+    }
   }
 
   componentWillReceiveProps(nextProps) {

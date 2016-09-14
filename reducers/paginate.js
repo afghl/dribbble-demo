@@ -1,6 +1,10 @@
 import merge from 'lodash/merge'
 import union from 'lodash/union'
 
+export const PENDING = 'PENDING'
+export const FETCHING = 'FETCHING'
+export const FETCHED = 'FETCHED'
+
 // Creates a reducer managing pagination, given the action types to handle,
 // and a function telling how to extract the key from an action.
 export default ({ types, defaultParams, more }) => {
@@ -26,23 +30,23 @@ export default ({ types, defaultParams, more }) => {
     params: defaultParams,
     page: 1,
     ids: [],
-    isFetching: false,
+    fetchStatus: PENDING,
     failTimes: 0
   }, action) => {
     switch (action.type) {
       case requestType:
         return merge({}, state, {
-          isFetching: true
+          fetchStatus: FETCHING
         })
       case successType:
         return merge({}, state, {
           ids: union(state.ids, action.response.result),
           page: state.page + 1,
-          isFetching: false
+          fetchStatus: FETCHED
         })
       case failureType:
         return merge({}, state, {
-          isFetching: false,
+          fetchStatus: FETCHED,
           failTimes: state.failTimes + 1
         })
       default:

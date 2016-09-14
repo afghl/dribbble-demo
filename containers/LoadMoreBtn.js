@@ -1,10 +1,12 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { loadShots } from '../actions/shots'
+import * as status from '../reducers/paginate'
 
 const mapStateToProps = (state) => {
-  const { isFetching } = state.pagination.shots
-  return { isFetching }
+  const { fetchStatus } = state.pagination.shots
+
+  return { isFetching: fetchStatus == status.FETCHING }
 }
 
 class LoadMoreBtn extends Component {

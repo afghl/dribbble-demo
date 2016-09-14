@@ -5,13 +5,14 @@ import paginate from './paginate'
 import * as shotsActions from '../actions/shots'
 import * as commentsActions from '../actions/comments'
 import * as relatedActions from '../actions/relatedShots'
+import * as status from './paginate'
 
 const defaultHandle = (state, action) => {
   return Object.assign({}, state, {
     params: merge({}, state.params, action.params),
     ids: [],
     page: 1,
-    isFetching: false
+    fetchStatus: status.PENDING
   })
 }
 

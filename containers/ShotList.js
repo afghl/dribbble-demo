@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import List from '../components/List'
 import ShotListItem from './ShotListItem'
 import { loadShots } from '../actions/shots'
+import * as status from '../reducers/paginate'
 
 const mapStateToProps = (state, ownProps) => {
   const {
@@ -11,7 +12,7 @@ const mapStateToProps = (state, ownProps) => {
     },
     pagination: {
       shots: {
-        isFetching,
+        fetchStatus,
         ids,
         failTimes
       }
@@ -28,7 +29,7 @@ const mapStateToProps = (state, ownProps) => {
 
   return {
     shots: shotList,
-    isFetching,
+    fetchStatus,
     failTimes,
     size,
     withMeta
@@ -37,22 +38,20 @@ const mapStateToProps = (state, ownProps) => {
 
 class ShotList extends Component {
   componentWillMount() {
-    const { loadShots } = this.props
     if (this.shouldLoadShots(this.props)) {
-      loadShots()
+      this.props.loadShots()
     }
   }
 
   componentWillReceiveProps(nextProps) {
-    const { loadShots } = nextProps
     if (this.shouldLoadShots(nextProps)) {
-      loadShots()
+      this.props.loadShots()
     }
   }
 
   shouldLoadShots(props) {
-    const { shots, isFetching, failTimes } = props
-    return shots.length == 0 && !isFetching && failTimes < 10
+    const { shots, fetchStatus, failTimes } = props
+    return shots.length == 0 && fetchStatus == status.PENDING && failTimes < 10
   }
 
   renderShotItem(shot) {
