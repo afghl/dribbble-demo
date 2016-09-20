@@ -47,19 +47,17 @@ class ShotDetailComments extends Component {
     return (
       <li className="response comment group ">
         <h2>
-          <a className="url hoverable" rel="contact" href="/kalee">
+          <span className="url hoverable" rel="contact">
             <img className="photo" src={user.avatarUrl}/>
             {user.name}
-          </a>
+          </span>
         </h2>
         <div className="comment-body" dangerouslySetInnerHTML={{__html: comment.body}}></div>
         <span className="comment-meta-likes">
-          <a className="likes-list" href="javascript:;">{comment.likesCount}</a><span className="hide">likes</span>
+          <span className="likes-list">{comment.likesCount}     likes</span>
         </span>
         <p className="comment-meta">
-        <a href="#comment-5558831" className="posted">about 12 hours ago</a>
-          <span className="sep">|</span>
-            <a className="likes" href="javascript:;">Like?</a>
+          <span className="posted">about 12 hours ago</span>
         </p>
       </li>
     )

@@ -7,7 +7,6 @@ export default class OverLay extends Component {
     return (
       <div
         className={className}
-        onClick={onClose}
       >
         <a
           href="javascript:;"
