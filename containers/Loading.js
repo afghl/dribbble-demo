@@ -2,8 +2,9 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import * as status from '../reducers/paginate'
 
-const mapStateToProps = (state) => {
-  const { fetchStatus } = state.pagination.shots
+const mapStateToProps = (state, ownProps) => {
+  const { spy } = ownProps
+  const { fetchStatus } = state.pagination[spy]
 
   return { isFetching: fetchStatus == status.FETCHING }
 }

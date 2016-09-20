@@ -16,7 +16,7 @@ export default class App extends Component {
         <Toolbar />
         <div id={"wrap-inner"}>
           <ShotList />
-          <Loading content={'Loading shots...'}/>
+          <Loading content={'Loading shots...'} spy={'shots'}/>
           <LoadMoreBtn />
         </div>
         <Footer />

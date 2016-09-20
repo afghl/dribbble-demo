@@ -8,6 +8,7 @@ import RelatedPlayerShots from './shot_detail/RelatedPlayerShots'
 import ShotImage from './shot_detail/ShotImage'
 import ShotStats from './shot_detail/ShotStats'
 import TagSession from './shot_detail/TagSession'
+import Loading from './Loading'
 
 const mapStateToProps = (state, ownProps) => {
   const { pageStyle: { detail: { shotId } }, entities: { shots, users } } = state
@@ -52,6 +53,7 @@ class ShotDetail extends Component {
                 shot={shot}
               />
               <Comments />
+              <Loading content={'Loading comments...'} spy={'comments'}/>
             </div>
             <div className="screenshot-meta">
               <ShotStats
@@ -60,6 +62,7 @@ class ShotDetail extends Component {
               <RelatedPlayerShots
                 user={user}
               />
+              <Loading content={'Loading related shots...'} spy={'related'}/>
               <TagSession
                 shot={shot}
               />
