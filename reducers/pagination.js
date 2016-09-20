@@ -47,7 +47,7 @@ export default combineReducers({
       relatedActions.RELATED_SUCCESS,
       relatedActions.RELATED_FAILURE,
     ],
-    defaultParams: { userId: undefined, per_page: 4 },
+    defaultParams: { userId: undefined, per_page: 4, sort: 'oldest' },
     more: {
       [relatedActions.UPDATE_RELATED_PARAMS]: defaultHandle
     }

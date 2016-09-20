@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { loadComments } from '../../actions/comments'
+import { loadComments, updateCommentsParams } from '../../actions/comments'
 import * as status from '../../reducers/paginate'
 import List from '../../components/List'
 import merge from 'lodash/merge'
@@ -24,6 +24,15 @@ const mapStateToProps = (state, ownProps) => {
 }
 
 class ShotDetailComments extends Component {
+
+  constructor(props) {
+    super(props)
+    this.state = this.getState()
+  }
+
+  getState() {
+    return { selectedSort: 'oldest' }
+  }
 
   shouldFetchComment(props) {
     return !!props.shot && props.fetchStatus == status.PENDING
@@ -64,18 +73,29 @@ class ShotDetailComments extends Component {
   }
 
   render() {
-    const { props: { comments }, renderComment } = this
+    const {
+      props: { comments },
+      renderComment,
+      updateComments
+    } = this
+    const { selectedSort } = this.state
+
+    const renderSort = (sort) => (
+      <a href="#"
+        className={selectedSort == sort ? "selected" : ""}
+        onClick={this.updateComments(sort)}>{sort}</a>
+    )
 
     return (
       <div id="comments-section">
         <h2 className="count section ">
           {comments.length} Responses
         </h2>
-        <div className="comments-sort">
-            <a className="oldest selected" href="javascript:;">oldest</a>
-            <a className="newest " href="javascript:;">newest</a>
-            <a className="liked " href="javascript:;">liked</a>
-        </div>
+        <List
+          className="comments-sort"
+          items={['oldest', 'newest', 'liked']}
+          renderItem={renderSort}
+        />
         <List
           className="comments"
           items={comments}
@@ -84,8 +104,17 @@ class ShotDetailComments extends Component {
       </div>
     )
   }
+
+  updateComments(sort) {
+    const { updateCommentsParams } = this.props
+    return () => {
+      this.setState({selectedSort: sort})
+      updateCommentsParams({sort})
+    }
+  }
 }
 
 export default connect(mapStateToProps, {
-  loadComments
+  loadComments,
+  updateCommentsParams
 })(ShotDetailComments)
