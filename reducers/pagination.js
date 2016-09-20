@@ -24,7 +24,7 @@ export default combineReducers({
       shotsActions.SHOTS_FAILURE,
     ],
     defaultParams: {
-      sort: 'all', list: 'all', timeframe: 'all', per_page: 10
+      sort: 'all', list: 'all', timeframe: 'all', per_page: 12
     },
     more: {
       [shotsActions.UPDATE_SHOTS_PARAMS]: defaultHandle
