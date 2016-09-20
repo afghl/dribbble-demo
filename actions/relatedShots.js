@@ -1,6 +1,7 @@
 import { CALL_API } from '../middleware/api'
 import Schemas from '../schemas/index'
 import merge from 'lodash/merge'
+import random from 'lodash/random'
 
 export const RELATED_REQUEST = 'RELATED_REQUEST'
 export const RELATED_SUCCESS = 'RELATED_SUCCESS'
@@ -18,11 +19,21 @@ const fetchRelated = params => {
   }
 }
 
+const randomPage = (total, per) => {
+  let page = Math.floor(total / per)
+  page = page < 1 ? 1 : page
+  return random(1, page)
+}
+
 export const loadRelated = userId => {
   return (dispatch, getState) => {
-    // TODO: get userId from state
-    const { params } = getState().pagination.related
-    return dispatch(fetchRelated(merge({ userId }, params)))
+    const {
+      pagination: { related: { params } },
+      entities: { users }
+    } = getState()
+    const user = users[userId]
+    const page = randomPage(user.shotsCount, params.per_page)
+    return dispatch(fetchRelated(merge({ userId, page }, params)))
   }
 }
 

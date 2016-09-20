@@ -44,7 +44,7 @@ class ShotDetailRelatedPlayerShots extends Component {
 
     return (
       <li className="multi-thumb">
-        <a href="#" onClick={() => {showShotDetail(shot.id, user.id)}}>
+        <a href="javascript:;" onClick={() => {showShotDetail(shot.id, user.id)}}>
           <img alt={shot.title} src={shot.images.teaser}/>
         </a>
       </li>
