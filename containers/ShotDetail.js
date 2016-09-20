@@ -11,13 +11,14 @@ import TagSession from './shot_detail/TagSession'
 import Loading from './Loading'
 
 const mapStateToProps = (state, ownProps) => {
-  const { pageStyle: { detail: { shotId } }, entities: { shots, users } } = state
+  const {
+    pageStyle: { detail: { shotId, userId } },
+    entities: { shots, users } } = state
   if (shotId == null) {
     return { shotId }
   }
   const shot = shots[shotId]
-  // map current user from users array by user_id
-  const user = users[shot.user]
+  const user = users[userId]
 
   return {
     shotId,

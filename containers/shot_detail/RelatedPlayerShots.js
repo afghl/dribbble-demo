@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import List from '../../components/List'
 import { loadRelated } from '../../actions/relatedShots'
+import { showShotDetail } from '../../actions/shotDetail'
 import * as status from '../../reducers/paginate'
 
 const mapStateToProps = (state, ownProps) => {
@@ -32,7 +33,6 @@ class ShotDetailRelatedPlayerShots extends Component {
     }
   }
 
-  // TODO: load related should not need user_id params
   componentWillReceiveProps(nextProps) {
     if (this.shouldFetchRelated(nextProps)) {
       this.props.loadRelated(nextProps.user.id)
@@ -40,9 +40,11 @@ class ShotDetailRelatedPlayerShots extends Component {
   }
 
   renderItem(shot) {
+    const { user, showShotDetail } = this.props
+
     return (
       <li className="multi-thumb">
-        <a href="#">
+        <a href="#" onClick={() => {showShotDetail(shot.id, user.id)}}>
           <img alt={shot.title} src={shot.images.teaser}/>
         </a>
       </li>
@@ -61,7 +63,7 @@ class ShotDetailRelatedPlayerShots extends Component {
         <List
           className="more-thumbs"
           items={related}
-          renderItem={this.renderItem}
+          renderItem={this.renderItem.bind(this)}
         />
       </div>
     )
@@ -70,5 +72,5 @@ class ShotDetailRelatedPlayerShots extends Component {
 
 export default connect(
   mapStateToProps,
-  { loadRelated }
+  { loadRelated, showShotDetail }
 )(ShotDetailRelatedPlayerShots)

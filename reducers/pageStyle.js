@@ -15,10 +15,12 @@ const list = (state = {
 }
 
 const detail = (state = {
-  shotId: undefined
+  shotId: undefined,
+  userId: undefined
 }, action) => {
   if (action.type == shotDetailActions.UPDATE_SELECTED) {
-    return { shotId: action.shotId }
+    const { shotId, userId } = action
+    return { shotId, userId }
   }
   return state
 }

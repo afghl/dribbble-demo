@@ -15,11 +15,12 @@ export const updateDisplayMode = (mode) => {
   }
 }
 
-const updateSelected = (shotId) => {
+const updateSelected = (shotId, userId) => {
   return (dispatch, getState) => {
     dispatch({
       type: UPDATE_SELECTED,
-      shotId
+      shotId,
+      userId
     })
 
     return Promise.resolve()
@@ -31,7 +32,7 @@ export const showShotDetail = (shotId, userId) => {
     dispatch(
       updateDisplayMode('detail')
     ).then(() => {
-      dispatch(updateSelected(shotId))
+      dispatch(updateSelected(shotId, userId))
     }).then(() => {
       dispatch(updateCommentsParams({shotId}))
     }).then(() => {
