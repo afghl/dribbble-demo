@@ -42,7 +42,7 @@ class ShotDetailRelatedPlayerShots extends Component {
   renderItem(shot) {
     return (
       <li className="multi-thumb">
-        <a href="javascript:;">
+        <a href="#">
           <img alt={shot.title} src={shot.images.teaser}/>
         </a>
       </li>
