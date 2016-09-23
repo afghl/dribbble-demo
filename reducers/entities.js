@@ -3,7 +3,7 @@ import values from 'lodash/values'
 import mapValues from 'lodash/mapValues'
 
 // Updates an entity cache in response to any action with response.entities.
-export default function shots(state = {
+export default function entities(state = {
   shots: {},
   users: {},
   comments: {}
