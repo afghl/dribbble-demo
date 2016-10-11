@@ -81,7 +81,7 @@ class ShotDetailComments extends Component {
     const { selectedSort } = this.state
 
     const renderSort = (sort) => (
-      <a href="#"
+      <a href="javascript:;"
         className={selectedSort == sort ? "selected" : ""}
         onClick={this.updateComments(sort)}>{sort}</a>
     )

@@ -14,7 +14,7 @@ export default function entities(state = {
 
   let { entities } = action.response
 
-  if (entities.comments != undefined ) {
+  if (entities.comments != undefined) {
     entities = handleComment(entities, action.response.result)
   }
   return merge({}, state, entities)
