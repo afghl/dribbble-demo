@@ -14,13 +14,18 @@ const list = (state = {
   }
 }
 
-const detail = (state = {
+const emptyDetail = {
   shotId: undefined,
   userId: undefined
-}, action) => {
+}
+
+const detail = (state = emptyDetail, action) => {
   if (action.type == shotDetailActions.UPDATE_SELECTED) {
     const { shotId, userId } = action
     return { shotId, userId }
+  } else if (action.type == shotDetailActions.UPDATE_DISPLAY_MODE) {
+    // clear shotId when update display mode
+    return emptyDetail
   }
   return state
 }
