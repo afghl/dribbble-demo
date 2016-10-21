@@ -346,8 +346,9 @@ h3.meta-head {
   li {
     float: left;
     width: 46%;
-    min-height: 85px;
+    height: 89px;
     margin: 0 0 15px 0;
+    overflow: hidden;
 
     a {
       display: inline-block;
@@ -356,6 +357,7 @@ h3.meta-head {
         width: 100%;
         border-radius: 2px;
         box-shadow: 0 1px 1px rgba(0,0,0,0.07);
+
       }
     }
 
