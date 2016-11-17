@@ -1,0 +1,45 @@
+.shot-nav {
+  position: absolute;
+  z-index: 9997;
+  top: 20px;
+  left: 50%;
+  width: 920px;
+  margin-left: -460px;
+
+  li {
+    position: absolute;
+    top: 0;
+    z-index: 9999;
+
+    a {
+      display: inline-block;
+      padding: 278px 26px;
+      opacity: .5;
+      width: 15px;
+      height: 30px;
+      background-size: 15px 30px;
+      background-repeat: no-repeat;
+      background-position: 26px center;
+      &:hover {
+        opacity: .8;
+      }
+    }
+  }
+
+  .shot-nav-prev {
+    left: -76px;
+    display: list-item;
+
+    a {
+      @include bg('icon-shot-prev-light.png');
+    }
+  }
+
+  .shot-nav-next {
+    right: -76px;
+
+    a {
+      @include bg('icon-shot-next-light.png');
+    }
+  }
+}
