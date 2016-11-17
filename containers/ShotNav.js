@@ -2,10 +2,6 @@ import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux'
 import { showNext, showPrev } from '../actions/shotDetail'
 
-const mapStateToProps = (state, ownProps) => {
-  return {}
-}
-
 class ShotNav extends Component {
   render() {
     const {showNext, showPrev} = this.props
@@ -24,6 +20,6 @@ class ShotNav extends Component {
 }
 
 export default connect(
-  mapStateToProps,
+  null,
   { showNext, showPrev }
 )(ShotNav)
