@@ -42,23 +42,31 @@ export const showShotDetail = (shotId, userId) => {
   }
 }
 
-// const getId = (state, mode = 'next') => {
-//
-// }
+const getId = (state, mode = 'next') => {
+  const { shotId } = state.pageStyle.detail
+  const { ids } = state.pagination.shots
+  const { shots } = state.entities
+  let id
+
+  if (mode == 'next') {
+    id = ids[indexOf(ids, shotId) + 1] || ids[0]
+  } else if (mode == 'prev') {
+    id = ids[indexOf(ids, shotId) - 1] || ids[ids.length - 1]
+  }
+
+  const userId = shots[id].user
+
+  return [id, userId]
+}
 
 export const showNext = () => {
   return (dispatch, getState) => {
-    const state = getState()
-    const { shotId } = state.pageStyle.detail
-    const { ids } = state.pagination.shots
-    const nextShotId = ids[indexOf(ids, shotId) + 1] || ids[0]
-    const nextShot = state.entities.shots[nextShotId]
-    const userId = nextShot.user
-    
+    const [id, userId] = getId(getState())
+
     dispatch(
-      updateSelected(nextShotId, userId)
+      updateSelected(id, userId)
     ).then(() => {
-      dispatch(updateCommentsParams({ nextShotId }))
+      dispatch(updateCommentsParams({ id }))
     }).then(() => {
       dispatch(updateRelatedParams({ userId }))
     })
@@ -67,17 +75,12 @@ export const showNext = () => {
 
 export const showPrev = () => {
   return (dispatch, getState) => {
-    const state = getState()
-    const { shotId } = state.pageStyle.detail
-    const { ids } = state.pagination.shots
-    const prevShotId = ids[indexOf(ids, shotId) - 1] || ids[ids.length - 1]
-    const prevShot = state.entities.shots[prevShotId]
-    const userId = prevShot.user
+    const [id, userId] = getId(getState(), 'prev')
 
     dispatch(
-      updateSelected(prevShotId, userId)
+      updateSelected(id, userId)
     ).then(() => {
-      dispatch(updateCommentsParams({ prevShotId }))
+      dispatch(updateCommentsParams({ id }))
     }).then(() => {
       dispatch(updateRelatedParams({ userId }))
     })
