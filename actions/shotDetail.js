@@ -28,20 +28,6 @@ const updateSelected = (shotId, userId) => {
   }
 }
 
-export const showShotDetail = (shotId, userId) => {
-  return (dispatch, getState) => {
-    dispatch(
-      updateDisplayMode('detail')
-    ).then(() => {
-      dispatch(updateSelected(shotId, userId))
-    }).then(() => {
-      dispatch(updateCommentsParams({shotId}))
-    }).then(() => {
-      dispatch(updateRelatedParams({userId}))
-    })
-  }
-}
-
 const getId = (state, mode = 'next') => {
   const { shotId } = state.pageStyle.detail
   const { ids } = state.pagination.shots
@@ -59,30 +45,34 @@ const getId = (state, mode = 'next') => {
   return [id, userId]
 }
 
+const dispatchBatchActions = (dispatch, shotId, userId) => {
+  dispatch(
+    updateDisplayMode('detail')
+  ).then(() => {
+    dispatch(updateSelected(shotId, userId))
+  }).then(() => {
+    dispatch(updateCommentsParams({shotId}))
+  }).then(() => {
+    dispatch(updateRelatedParams({userId}))
+  })
+}
+
+export const showShotDetail = (shotId, userId) => {
+  return (dispatch, getState) => {
+    dispatchBatchActions(dispatch, shotId, userId)
+  }
+}
+
 export const showNext = () => {
   return (dispatch, getState) => {
     const [id, userId] = getId(getState())
-
-    dispatch(
-      updateSelected(id, userId)
-    ).then(() => {
-      dispatch(updateCommentsParams({ id }))
-    }).then(() => {
-      dispatch(updateRelatedParams({ userId }))
-    })
+    dispatchBatchActions(dispatch, id, userId)
   }
 }
 
 export const showPrev = () => {
   return (dispatch, getState) => {
     const [id, userId] = getId(getState(), 'prev')
-
-    dispatch(
-      updateSelected(id, userId)
-    ).then(() => {
-      dispatch(updateCommentsParams({ id }))
-    }).then(() => {
-      dispatch(updateRelatedParams({ userId }))
-    })
+    dispatchBatchActions(dispatch, id, userId)
   }
 }
