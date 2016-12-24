@@ -6,7 +6,6 @@ class Header extends Component {
       <header>
         <a className="main-logo" href="/">
         </a>
-        <p>Dribble</p>
       </header>
     )
   }

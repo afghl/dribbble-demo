@@ -31,8 +31,8 @@ class MenuItem extends Component {
 
   render() {
     const [
-      selectedItem,
-      otherItems
+      selected,
+      others
     ] = this.filterItem(this.props.items, this.state.selectedKey)
 
     return (
@@ -42,12 +42,12 @@ class MenuItem extends Component {
           className='selected-menu'
           href="javascript:;"
         >
-          {selectedItem.name}
+          {selected.name}
         </a>
         <List
           className={this.state.visiting ? 'sub' : 'sub hide'}
           renderItem={this.renderItem}
-          items={otherItems}
+          items={others}
         />
       </li>
     )
@@ -70,10 +70,10 @@ class MenuItem extends Component {
   }
 
   filterItem(items, key) {
-    const selectedItem = find(items, i => i.key == key)
+    const selected = find(items, i => i.key == key)
     return [
-      selectedItem,
-      without(items, selectedItem)
+      selected,
+      without(items, selected)
     ]
   }
 }

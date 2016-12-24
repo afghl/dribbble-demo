@@ -23,7 +23,6 @@ class ShotOverlay extends Component {
     body.style.overflow = shouldShow ? 'hidden' : 'auto'
   }
 
-
   updateDisplay() {
     this.props.updateDisplayMode('list')
   }
