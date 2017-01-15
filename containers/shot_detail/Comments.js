@@ -4,6 +4,7 @@ import { loadComments, updateCommentsParams } from '../../actions/comments'
 import * as status from '../../reducers/paginate'
 import List from '../../components/List'
 import merge from 'lodash/merge'
+import moment from 'moment'
 
 const mapStateToProps = (state, ownProps) => {
   const {
@@ -51,8 +52,8 @@ class ShotDetailComments extends Component {
   }
 
   renderComment(comment) {
-    const { user } = comment
-
+    const { user, createdAt } = comment
+    const time = moment(createdAt).fromNow()
     return (
       <li className="response comment group ">
         <h2>
@@ -66,7 +67,7 @@ class ShotDetailComments extends Component {
           <span className="likes-list">{comment.likesCount}     likes</span>
         </span>
         <p className="comment-meta">
-          <span className="posted">about 12 hours ago</span>
+          <span className="posted">{time}</span>
         </p>
       </li>
     )

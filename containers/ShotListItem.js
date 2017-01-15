@@ -1,6 +1,7 @@
 import React, { Component, PropTypes } from 'react'
 import { showShotDetail } from '../actions/shotDetail'
 import { connect } from 'react-redux'
+import moment from 'moment'
 
 const mapStateToProps = (state, ownProps) => {
   const { pageStyle: { list }, entities: { users } } = state
@@ -45,12 +46,13 @@ class ShotListItem extends Component {
   }
 
   renderOver() {
-    const { shot: { title, description } } = this.props
+    const { shot: { title, description, updatedAt } } = this.props
+    const time = moment(updatedAt).fromNow()
     return (
       <div className="shot-over" href="javascript:;">
         <strong>{title}</strong>
         <span className="comment" dangerouslySetInnerHTML={{__html: description}}></span>
-        <em className="timestamp">about 7 hours ago</em>
+        <em className="timestamp">{time}</em>
       </div>
     )
   }
