@@ -40,8 +40,8 @@
 
         img {
           display: block;
-          max-width: 400px;
-          max-height: 300px;
+          max-width: 100%;
+          max-height: 100%;
         }
       }
     }
@@ -50,6 +50,16 @@
 
 .the-shot.zooming {
   cursor: zoom-out;
+  margin-left: -55px;
+  width: 880px;
+  .single {
+    width: 800px;
+    min-height: 600px;
+    .single-grid {
+      width: 800px;
+      height: 600px;
+    }
+  }
   // width: 880px;
 }
 
