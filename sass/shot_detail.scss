@@ -18,6 +18,7 @@
   width: 440px;
   position: relative;
   z-index: 1;
+  cursor: zoom-in;
 
   .single {
     width: 400px;
@@ -38,7 +39,6 @@
         overflow: hidden;
 
         img {
-          cursor: zoom-in;
           display: block;
           max-width: 400px;
           max-height: 300px;
@@ -46,6 +46,11 @@
       }
     }
   }
+}
+
+.the-shot.zooming {
+  cursor: zoom-out;
+  // width: 880px;
 }
 
 #screenshot-title-section {
