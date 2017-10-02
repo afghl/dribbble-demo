@@ -8,7 +8,7 @@ shotSchema.define({ user: userSchema })
 commentSchema.define({ user: userSchema })
 userSchema.define({ shots: arrayOf(shotSchema)})
 
-// Schemas for Dribble API responses.
+// Schemas for dribbble API responses.
 export default {
   SHOT: shotSchema,
   SHOT_ARRAY: arrayOf(shotSchema),

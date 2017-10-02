@@ -20,7 +20,7 @@ export default function entities(state = {
   return merge({}, state, entities)
 }
 
-// dribble api doesnt return shot info in comment api,
+// dribbble api doesnt return shot info in comment api,
 // need to manually map comment shot id to comment
 const handleComment = (entities, result) => {
   let { comments } = entities

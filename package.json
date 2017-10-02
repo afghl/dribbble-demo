@@ -1,7 +1,7 @@
 {
-  "name": "dribble-demo",
+  "name": "dribbble-demo",
   "version": "1.0.0",
-  "description": "use React + Redux and dribble api to build this demo repo.",
+  "description": "use React + Redux and dribbble api to build this demo repo.",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -9,14 +9,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/afghl/dribble-demo.git"
+    "url": "git+https://github.com/afghl/dribbble-demo.git"
   },
   "author": "afghl",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/afghl/dribble-demo/issues"
+    "url": "https://github.com/afghl/dribbble-demo/issues"
   },
-  "homepage": "https://github.com/afghl/dribble-demo#readme",
+  "homepage": "https://github.com/afghl/dribbble-demo#readme",
   "dependencies": {
     "babel-polyfill": "^6.3.14",
     "css-loader": "^0.23.1",

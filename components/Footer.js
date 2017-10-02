@@ -7,7 +7,7 @@ export default class Footer extends Component {
         <div className="footer-wrap">
           <ul>
             <li>
-              <a className="dribble-footer-logo" href="https://dribbble.com"></a>
+              <a className="dribbble-footer-logo" href="https://dribbble.com"></a>
             </li>
           </ul>
         </div>
