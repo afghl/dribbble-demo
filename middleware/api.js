@@ -3,8 +3,8 @@ import { camelizeKeys } from 'humps'
 import 'isomorphic-fetch'
 import forOwn from 'lodash/forOwn'
 
-const TOKEN = '5dec7baeb4eb2d56d4b803a2ad8a39dee32de2492732f68fbdb80ceb24ef9ba0'
-const API_ROOT = 'https://api.dribbble.com/v1/'
+const TOKEN = 'ce6984ddef68d939a1be2ea772d537fb24f433b53186cf010c78d0be78061e38'
+const API_ROOT = 'https://api.dribbble.com/v2/'
 
 const getFullUrl = (endpoint, params) => {
   const fullUrl = (endpoint.indexOf(API_ROOT) === -1) ? API_ROOT + endpoint : endpoint
